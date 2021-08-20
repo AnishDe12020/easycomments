@@ -16,6 +16,7 @@ import {
 import { Formik, Form, ErrorMessage } from "formik"
 import { useUser } from "@auth0/nextjs-auth0"
 import { createSite } from "@/utils/db"
+import { mutate } from "swr"
 
 const AddSiteModal = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
@@ -57,6 +58,15 @@ const AddSiteModal = ({ children }) => {
             console.log(newSite)
             console.log(await createSite(newSite))
             setSubmitting(false)
+
+            onClose()
+            mutate(
+              "/api/sites",
+              async data => {
+                return { sites: [...data.sites, newSite] }
+              },
+              false
+            )
           }}
         >
           {({ isSubmitting, values, handleBlur, handleChange }) => (
