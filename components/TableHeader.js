@@ -1,6 +1,12 @@
-import { Breadcrumb, BreadcrumbLink } from "@chakra-ui/breadcrumb"
-import { Heading } from "@chakra-ui/layout"
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  Flex,
+  Heading,
+} from "@chakra-ui/react"
 import React from "react"
+import AddSiteModal from "./AddSiteModal"
 
 const TableHeader = () => (
   <>
@@ -9,8 +15,9 @@ const TableHeader = () => (
         <BreadcrumbLink>Sites</BreadcrumbLink>
       </BreadcrumbItem>
     </Breadcrumb>
-    <Flex>
-      <Heading m={8}>All Sites</Heading>
+    <Flex justifyContent="space-between">
+      <Heading mb={8}>My Sites</Heading>
+      <AddSiteModal>+ Add Site</AddSiteModal>
     </Flex>
   </>
 )

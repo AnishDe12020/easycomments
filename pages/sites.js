@@ -1,8 +1,9 @@
-import AddSiteModal from "@/components/AddSiteModal"
 import Header from "@/components/Header"
 import SiteTable from "@/components/SiteTable"
 import SiteTableSkeleton from "@/components/SiteTableSkeleton"
+import TableHeader from "@/components/TableHeader"
 import fetcher from "@/utils/fetcher"
+import { Box } from "@chakra-ui/react"
 import useSWR from "swr"
 
 const Sites = () => {
@@ -12,9 +13,11 @@ const Sites = () => {
   return (
     <>
       <Header />
-      <AddSiteModal>+ Add Site</AddSiteModal>
+      <Box mx={32} my={8} p={4} direction="column">
+        <TableHeader />
 
-      {data ? <SiteTable items={data.sites} /> : <SiteTableSkeleton />}
+        {data ? <SiteTable items={data.sites} /> : <SiteTableSkeleton />}
+      </Box>
     </>
   )
 }
