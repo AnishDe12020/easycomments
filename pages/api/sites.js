@@ -1,4 +1,5 @@
-const { getAllSites } = require("@/utils/db-admin")
+import { getAllSites } from "@/utils/db-admin"
+import { withApiAuthRequired } from "@auth0/nextjs-auth0"
 
 const sites = async (req, res) => {
   const { sites, error } = await getAllSites()
@@ -10,4 +11,4 @@ const sites = async (req, res) => {
   res.status(200).json({ sites })
 }
 
-export default sites
+export default withApiAuthRequired(sites)
