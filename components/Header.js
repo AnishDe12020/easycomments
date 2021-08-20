@@ -10,14 +10,9 @@ const Header = () => {
       alignItems="center"
       justifyContent="space-between"
       backgroundColor={headerBg}
+      h="80px"
     >
-      <Flex
-        m={4}
-        p={2}
-        justifyContent="space-between"
-        alignItems="center"
-        height="50px"
-      >
+      <Flex m={4} p={2} justifyContent="space-between" alignItems="center">
         <CopyIcon m={2} />
         <Link m={2} textAlign="center">
           Sites
