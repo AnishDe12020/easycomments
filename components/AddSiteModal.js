@@ -14,9 +14,12 @@ import {
   Input,
 } from "@chakra-ui/react"
 import { Formik, Form, ErrorMessage } from "formik"
+import { useUser } from "@auth0/nextjs-auth0"
+import { createSite } from "@/utils/db"
 
 const AddSiteModal = ({ children }) => {
   const { isOpen, onOpen, onClose } = useDisclosure()
+  const { user } = useUser()
 
   const initialRef = React.useRef()
 
@@ -44,8 +47,15 @@ const AddSiteModal = ({ children }) => {
             }
             return errors
           }}
-          onSubmit={(values, { setSubmitting }) => {
-            console.log(values)
+          onSubmit={async ({ siteName, siteUrl }, { setSubmitting }) => {
+            const newSite = {
+              authorEmail: user.email,
+              createdAt: new Date().toISOString(),
+              name: siteName,
+              url: siteUrl,
+            }
+            console.log(newSite)
+            console.log(await createSite(newSite))
             setSubmitting(false)
           }}
         >
