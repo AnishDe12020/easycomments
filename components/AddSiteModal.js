@@ -58,26 +58,39 @@ const AddSiteModal = ({ children }) => {
               name: siteName,
               url: siteUrl,
             }
-            console.log(newSite)
-            console.log(await createSite(newSite))
-            setSubmitting(false)
+            await createSite(newSite)
+              .then(() => {
+                setSubmitting(false)
 
-            onClose()
-            mutate(
-              "/api/sites",
-              async data => {
-                return { sites: [...data.sites, { id: "fake_id", ...newSite }] }
-              },
-              false
-            )
+                onClose()
+                mutate(
+                  "/api/sites",
+                  async data => {
+                    return {
+                      sites: [...data.sites, { id: "fake_id", ...newSite }],
+                    }
+                  },
+                  false
+                )
 
-            toast({
-              title: "Site Added",
-              description: "Your site has been added",
-              status: "success",
-              duration: 5000,
-              isClosable: true,
-            })
+                toast({
+                  title: "Site Added",
+                  description: "Your site has been added",
+                  status: "success",
+                  duration: 5000,
+                  isClosable: true,
+                })
+              })
+              .catch(error => {
+                console.error(error)
+                toast({
+                  title: "An error occured when adding your site",
+                  description: error.message,
+                  type: "error",
+                  duration: 5000,
+                  isClosable: true,
+                })
+              })
           }}
         >
           {({ isSubmitting, values, handleBlur, handleChange }) => (
