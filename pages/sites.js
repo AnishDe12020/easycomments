@@ -1,5 +1,11 @@
+import AddSiteModal from "@/components/AddSiteModal"
+
 const Sites = () => {
-  return <h1>Sites Page</h1>
+  return (
+    <>
+      <AddSiteModal>+ Add Site</AddSiteModal>
+    </>
+  )
 }
 
 export default Sites
