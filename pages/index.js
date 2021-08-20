@@ -1,9 +1,10 @@
+import Header from "@/components/Header"
 import { Box } from "@chakra-ui/react"
 import Head from "next/head"
 
 export default function Home() {
   return (
-    <Box>
+    <Box h="100vh">
       <Head>
         <title>Easy Comments</title>
         <meta
@@ -12,6 +13,7 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
     </Box>
   )
 }
