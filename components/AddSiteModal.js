@@ -12,6 +12,7 @@ import {
   FormControl,
   FormLabel,
   Input,
+  useToast,
 } from "@chakra-ui/react"
 import { Formik, Form, ErrorMessage } from "formik"
 import { useUser } from "@auth0/nextjs-auth0"
@@ -23,6 +24,8 @@ const AddSiteModal = ({ children }) => {
   const { user } = useUser()
 
   const initialRef = React.useRef()
+
+  const toast = useToast()
 
   return (
     <>
@@ -63,10 +66,18 @@ const AddSiteModal = ({ children }) => {
             mutate(
               "/api/sites",
               async data => {
-                return { sites: [...data.sites, newSite] }
+                return { sites: [...data.sites, { id: "fake_id", ...newSite }] }
               },
               false
             )
+
+            toast({
+              title: "Site Added",
+              description: "Your site has been added",
+              status: "success",
+              duration: 5000,
+              isClosable: true,
+            })
           }}
         >
           {({ isSubmitting, values, handleBlur, handleChange }) => (
