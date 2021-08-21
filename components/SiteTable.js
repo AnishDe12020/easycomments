@@ -1,4 +1,5 @@
 import React from "react"
+import NextLink from "next/link"
 import {
   Table,
   Thead,
@@ -30,7 +31,11 @@ const SiteTable = ({ items }) => {
               <Td>
                 <Link>{item.name}</Link>
               </Td>
-              <Td>{item.url}</Td>
+              <Td>
+                <NextLink href={item.url} passHref>
+                  <Link>{item.url}</Link>
+                </NextLink>
+              </Td>
               <Td>
                 <Link>View Comments</Link>
               </Td>
