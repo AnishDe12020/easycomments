@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import { useUser } from "@auth0/nextjs-auth0"
 import { Textarea, Button, useToast } from "@chakra-ui/react"
 import Header from "@/components/Header"
@@ -6,13 +6,38 @@ import { useRouter } from "next/dist/client/router"
 
 import { Formik, Form, ErrorMessage } from "formik"
 import { addComment } from "@/utils/db"
+import { getAllSites } from "@/utils/db-admin"
+
+export const getStaticProps = context => {
+  return {
+    props: {},
+    revalidate: 1,
+  }
+}
+
+export const getStaticPaths = async () => {
+  const { sites } = await getAllSites()
+  const paths = sites.map(site => ({
+    params: {
+      site: [site.id.toString()],
+    },
+  }))
+
+  return {
+    paths,
+    fallback: false,
+  }
+}
 
 const SiteComments = () => {
   const { user } = useUser()
   const router = useRouter()
 
-  const tmp = router.query.site
-  const [siteId, route] = tmp
+  const siteAndRoute = router.query?.site
+  const siteId = siteAndRoute ? siteAndRoute[0] : null
+  const route = siteAndRoute ? siteAndRoute[1] : null
+
+  console.log(`fwew ${siteId} - ${route}`)
 
   const toast = useToast()
 

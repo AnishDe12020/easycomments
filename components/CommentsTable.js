@@ -11,35 +11,33 @@ import {
   Flex,
   Text,
 } from "@chakra-ui/react"
-import AddSiteModal from "./AddSiteModal"
 
-const SiteTable = ({ sites }) => {
-  if (sites.length > 0) {
+const CommentsTable = ({ comments }) => {
+  if (comments.length > 0) {
     return (
       <Table>
         <Thead>
           <Tr>
             <Th>Name</Th>
-            <Th>URL</Th>
-            <Th>Comments</Th>
+            <Th>Comment</Th>
+            <Th>Route</Th>
+            <Th>{""}</Th>
             <Th>{""}</Th>
           </Tr>
         </Thead>
         <Tbody>
-          {sites.map(site => (
-            <Tr key={site.id}>
+          {comments.map(comment => (
+            <Tr key={comment.id}>
               <Td>
-                <Link>{site.name}</Link>
+                <Link>{comment.authorName}</Link>
               </Td>
               <Td>
-                <NextLink href={site.url} passHref>
-                  <Link>{site.url}</Link>
+                <NextLink href={comment.} passHref>
+                  <Link>{comment.url}</Link>
                 </NextLink>
               </Td>
-              <Td>
-                <Link>View Comments</Link>
-              </Td>
-              <Td>Will be delete site button</Td>
+              <Td>Will be approve comment button</Td>
+              <Td>Will be delete comment button</Td>
             </Tr>
           ))}
         </Tbody>
@@ -55,12 +53,11 @@ const SiteTable = ({ sites }) => {
         alignItems="center"
       >
         <Text pb={8} fontSize="30px">
-          Add some sites first!
+          You don't have any comments yet.
         </Text>
-        <AddSiteModal>+ Add your first site</AddSiteModal>
       </Flex>
     )
   }
 }
 
-export default SiteTable
+export default CommentsTable
