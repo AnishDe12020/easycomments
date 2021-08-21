@@ -19,11 +19,15 @@ const Header = () => {
       h="80px"
     >
       <Flex m={4} p={2} justifyContent="space-between" alignItems="center">
-        <CopyIcon m={2} />
-        <Link m={2} textAlign="center">
-          Sites
-        </Link>
-        <Link m={2}>Comments</Link>
+        <NextLink href="/" passHref>
+          <CopyIcon m={2} />
+        </NextLink>
+        <NextLink href="/sites" passHref>
+          <Link m={2}>Sites</Link>
+        </NextLink>
+        <NextLink href="/comments" passHref>
+          <Link m={2}>Comments</Link>
+        </NextLink>
       </Flex>
       <Button onClick={toggleColorMode}>
         {colorMode === "light" ? <SunIcon /> : <MoonIcon />}
