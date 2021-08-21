@@ -17,7 +17,7 @@ const Sites = () => {
       <Box mx={32} my={8} p={4} direction="column">
         <TableHeader />
 
-        {data ? <SiteTable items={data.sites} /> : <SiteTableSkeleton />}
+        {data ? <SiteTable sites={data.sites} /> : <SiteTableSkeleton />}
       </Box>
     </>
   )

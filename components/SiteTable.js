@@ -13,8 +13,8 @@ import {
 } from "@chakra-ui/react"
 import AddSiteModal from "./AddSiteModal"
 
-const SiteTable = ({ items }) => {
-  if (items.length > 0) {
+const SiteTable = ({ sites }) => {
+  if (sites.length > 0) {
     return (
       <Table>
         <Thead>

@@ -36,7 +36,7 @@ const SiteComments = () => {
             return errors
           }}
           onSubmit={async (values, { setSubmitting }) => {
-            const newFeedback = {
+            const newComment = {
               siteId,
               route: route || "/",
               authorName: user.given_name + " " + user.family_name,
@@ -46,9 +46,9 @@ const SiteComments = () => {
               status: "pending",
             }
 
-            console.log(newFeedback)
+            console.log(newComment)
 
-            addComment(newFeedback)
+            addComment(newComment)
               .then(
                 toast({
                   title: "Comment added",
