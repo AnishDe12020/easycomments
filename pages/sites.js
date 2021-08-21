@@ -5,6 +5,7 @@ import TableHeader from "@/components/TableHeader"
 import fetcher from "@/utils/fetcher"
 import { Box } from "@chakra-ui/react"
 import useSWR from "swr"
+import { withPageAuthRequired } from "@auth0/nextjs-auth0/dist/frontend"
 
 const Sites = () => {
   const { data } = useSWR("/api/sites", fetcher)
@@ -22,4 +23,4 @@ const Sites = () => {
   )
 }
 
-export default Sites
+export default withPageAuthRequired(Sites)

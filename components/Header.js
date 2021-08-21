@@ -9,6 +9,7 @@ const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode()
   const headerBg = useColorModeValue("gray.100", "gray.900")
   const { user } = useUser()
+  console.log(user)
 
   return (
     <Flex
