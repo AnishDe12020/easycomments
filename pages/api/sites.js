@@ -1,8 +1,9 @@
-import { getAllSites } from "@/utils/db-admin"
-import { withApiAuthRequired } from "@auth0/nextjs-auth0"
+import { getUserSites } from "@/utils/db-admin"
+import { getSession, withApiAuthRequired } from "@auth0/nextjs-auth0"
 
 const sites = async (req, res) => {
-  const { sites, error } = await getAllSites()
+  const { user } = getSession(req)
+  const { sites, error } = await getUserSites(user.email)
 
   if (error) {
     res.status(500).json({ error })
