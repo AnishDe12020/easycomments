@@ -60,8 +60,6 @@ const AddSiteModal = ({ children }) => {
             }
             await createSite(newSite)
               .then(() => {
-                setSubmitting(false)
-
                 onClose()
                 mutate(
                   "/api/sites",
@@ -86,11 +84,13 @@ const AddSiteModal = ({ children }) => {
                 toast({
                   title: "An error occured when adding your site",
                   description: error.message,
-                  type: "error",
+                  status: "error",
                   duration: 5000,
                   isClosable: true,
                 })
               })
+
+            setSubmitting(false)
           }}
         >
           {({ isSubmitting, values, handleBlur, handleChange }) => (
