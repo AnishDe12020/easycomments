@@ -1,6 +1,12 @@
 import React, { useEffect } from "react"
 import { useUser } from "@auth0/nextjs-auth0"
-import { Textarea, Button, useToast } from "@chakra-ui/react"
+import {
+  Textarea,
+  Button,
+  useToast,
+  useColorModeValue,
+  Box,
+} from "@chakra-ui/react"
 import Header from "@/components/Header"
 import { useRouter } from "next/dist/client/router"
 import Comment from "@/components/Comment"
@@ -35,6 +41,8 @@ export const getStaticPaths = async () => {
 const SiteComments = () => {
   const { user } = useUser()
   const router = useRouter()
+
+  const commentsBg = useColorModeValue("gray.100", "gray.900")
 
   const siteAndRoute = router.query?.site
   const siteId = siteAndRoute ? siteAndRoute[0] : null
@@ -124,15 +132,17 @@ const SiteComments = () => {
         <Button onClick={handleLoginClick}>Log in to leave a comment</Button>
       )}
 
-      {allComments &&
-        allComments.map(comment => (
-          <Comment
-            authorName={comment.authorName}
-            comment={comment.comment}
-            createdAt={comment.createdAt}
-            key={comment.id}
-          />
-        ))}
+      <Box backgroundColor={commentsBg} m={8} borderRadius={16} p={4}>
+        {allComments &&
+          allComments.map(comment => (
+            <Comment
+              authorName={comment.authorName}
+              comment={comment.comment}
+              createdAt={comment.createdAt}
+              key={comment.id}
+            />
+          ))}
+      </Box>
     </>
   )
 }
