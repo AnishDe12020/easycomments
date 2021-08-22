@@ -67,3 +67,25 @@ export const getUserComments = async email => {
     return { error }
   }
 }
+
+export const getSiteComments = async (siteId, route) => {
+  try {
+    const ref = await db.collection("comments").where("siteId", "==", siteId)
+
+    if (route) {
+      ref = ref.where("route", "==", route)
+    }
+
+    const snapshot = await ref.get()
+
+    const comments = []
+
+    snapshot.forEach(doc => {
+      comments.push({ id: doc.id, ...doc.data() })
+    })
+
+    return { comments }
+  } catch (error) {
+    return { error }
+  }
+}

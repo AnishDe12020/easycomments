@@ -3,10 +3,12 @@ import { useUser } from "@auth0/nextjs-auth0"
 import { Textarea, Button, useToast } from "@chakra-ui/react"
 import Header from "@/components/Header"
 import { useRouter } from "next/dist/client/router"
+import Comment from "@/components/Comment"
 
 import { Formik, Form, ErrorMessage } from "formik"
 import { addComment } from "@/utils/db"
 import { getAllSites } from "@/utils/db-admin"
+import useSWR from "swr"
 
 export const getStaticProps = context => {
   return {
@@ -36,6 +38,14 @@ const SiteComments = () => {
   const siteAndRoute = router.query?.site
   const siteId = siteAndRoute ? siteAndRoute[0] : null
   const route = siteAndRoute ? siteAndRoute[1] : null
+
+  const commentsApiUrl = route
+    ? `/api/comments/${siteId}/${route}`
+    : `/api/comments/${siteId}`
+
+  const { data } = useSWR(commentsApiUrl)
+
+  const allComments = data.comments
 
   const toast = useToast()
 
@@ -112,6 +122,16 @@ const SiteComments = () => {
       ) : (
         <Button onClick={handleLoginClick}>Log in to leave a comment</Button>
       )}
+
+      {allComments &&
+        allComments.map(comment => (
+          <Comment
+            authorName={comment.authorName}
+            comment={comment.comment}
+            createdAt={comment.createdAt}
+            key={comment.id}
+          />
+        ))}
     </>
   )
 }
