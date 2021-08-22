@@ -35,15 +35,32 @@ export const getUserSites = async email => {
 
 export const getUserComments = async email => {
   try {
-    const snapshot = await db
-      .collection("comments")
-      .where("authorEmail", "==", email)
-      .get()
+    const data = await getUserSites(email)
+    // console.log(data.sites)
+
+    let i,
+      j,
+      tmp,
+      chunk = 10
     const comments = []
 
-    snapshot.forEach(doc => {
-      comments.push({ id: doc.id, ...doc.data() })
-    })
+    for (i = 0, j = data.sites.length; i < j; i += chunk) {
+      tmp = data.sites.slice(i, i + chunk)
+      const snapshot = await db
+        .collection("comments")
+        .where(
+          "siteId",
+          "in",
+          tmp.map(site => site.id)
+        )
+        .get()
+
+      console.log(snapshot)
+
+      snapshot.forEach(doc => {
+        comments.push({ id: doc.id, ...doc.data() })
+      })
+    }
 
     return { comments }
   } catch (error) {

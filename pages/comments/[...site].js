@@ -25,7 +25,7 @@ export const getStaticPaths = async () => {
 
   return {
     paths,
-    fallback: false,
+    fallback: true,
   }
 }
 
@@ -36,8 +36,6 @@ const SiteComments = () => {
   const siteAndRoute = router.query?.site
   const siteId = siteAndRoute ? siteAndRoute[0] : null
   const route = siteAndRoute ? siteAndRoute[1] : null
-
-  console.log(`fwew ${siteId} - ${route}`)
 
   const toast = useToast()
 
