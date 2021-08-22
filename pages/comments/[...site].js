@@ -6,6 +6,7 @@ import {
   useToast,
   useColorModeValue,
   Box,
+  Flex,
 } from "@chakra-ui/react"
 import Header from "@/components/Header"
 import { useRouter } from "next/dist/client/router"
@@ -115,16 +116,18 @@ const SiteComments = () => {
         >
           {({ isSibmitting, handleChange, handleBlur }) => (
             <Form>
-              <Textarea
-                placeholder="Write a comment..."
-                onChange={handleChange}
-                onBlur={handleBlur}
-                name="comment"
-              />
-              <ErrorMessage name="comment" />
-              <Button type="submit" isLoading={isSibmitting}>
-                Leave a Comment
-              </Button>
+              <Box m={8} p={4} flexDirection="column">
+                <Textarea
+                  placeholder="Write a comment..."
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  name="comment"
+                />
+                <ErrorMessage name="comment" />
+                <Button type="submit" mt={4} isLoading={isSibmitting}>
+                  Leave a Comment
+                </Button>
+              </Box>
             </Form>
           )}
         </Formik>
