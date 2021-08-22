@@ -10,6 +10,7 @@ import {
   Link,
   Flex,
   Text,
+  Code,
 } from "@chakra-ui/react"
 
 const CommentsTable = ({ comments }) => {
@@ -31,10 +32,9 @@ const CommentsTable = ({ comments }) => {
               <Td>
                 <Link>{comment.authorName}</Link>
               </Td>
+              <Td>{comment.comment}</Td>
               <Td>
-                <NextLink href={comment.} passHref>
-                  <Link>{comment.url}</Link>
-                </NextLink>
+                <Code>{comment.route}</Code>
               </Td>
               <Td>Will be approve comment button</Td>
               <Td>Will be delete comment button</Td>
