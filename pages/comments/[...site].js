@@ -9,6 +9,7 @@ import { Formik, Form, ErrorMessage } from "formik"
 import { addComment } from "@/utils/db"
 import { getAllSites } from "@/utils/db-admin"
 import useSWR from "swr"
+import fetcher from "@/utils/fetcher"
 
 export const getStaticProps = context => {
   return {
@@ -43,9 +44,9 @@ const SiteComments = () => {
     ? `/api/comments/${siteId}/${route}`
     : `/api/comments/${siteId}`
 
-  const { data } = useSWR(commentsApiUrl)
+  const { data } = useSWR(commentsApiUrl, fetcher)
 
-  const allComments = data.comments
+  const allComments = data?.comments
 
   const toast = useToast()
 

@@ -1,12 +1,12 @@
-import { Flex, Heading } from "@chakra-ui/react"
+import { Box, Heading, Text } from "@chakra-ui/react"
 import React from "react"
 
 const Comment = ({ authorName, comment, createdAt }) => {
   return (
-    <Flex align="center">
+    <Box m={8} p={4}>
       <Heading>{authorName}</Heading>
-      <p>{comment}</p>
-    </Flex>
+      <Text size="lg">{comment}</Text>
+    </Box>
   )
 }
 
