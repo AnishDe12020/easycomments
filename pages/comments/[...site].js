@@ -2,11 +2,12 @@ import React, { useEffect } from "react"
 import { useUser } from "@auth0/nextjs-auth0"
 import {
   Textarea,
+  Text,
   Button,
   useToast,
   useColorModeValue,
   Box,
-  Flex,
+  Center,
 } from "@chakra-ui/react"
 import Header from "@/components/Header"
 import { useRouter } from "next/dist/client/router"
@@ -118,7 +119,7 @@ const SiteComments = () => {
       )}
 
       <Box backgroundColor={commentsBg} m={8} borderRadius={16} p={4}>
-        {allComments &&
+        {allComments?.length > 0 ? (
           allComments.map(comment => (
             <Comment
               authorName={comment.authorName}
@@ -126,7 +127,14 @@ const SiteComments = () => {
               createdAt={comment.createdAt}
               key={comment.id}
             />
-          ))}
+          ))
+        ) : (
+          <Center>
+            <Text p={2} fontSize="20px">
+              No comments yet
+            </Text>
+          </Center>
+        )}
       </Box>
     </>
   )
