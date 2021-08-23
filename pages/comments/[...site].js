@@ -128,21 +128,25 @@ const SiteComments = () => {
       )}
 
       <Box backgroundColor={commentsBg} m={8} borderRadius={16} p={4}>
-        {allComments?.length > 0 ? (
-          allComments.map(comment => (
-            <Comment
-              authorName={comment.authorName}
-              comment={comment.comment}
-              createdAt={comment.createdAt}
-              key={comment.id}
-            />
-          ))
+        {allComments ? (
+          allComments.length > 0 ? (
+            allComments.map(comment => (
+              <Comment
+                authorName={comment.authorName}
+                comment={comment.comment}
+                createdAt={comment.createdAt}
+                key={comment.id}
+              />
+            ))
+          ) : (
+            <Center>
+              <Text p={2} fontSize="20px">
+                No comments yet
+              </Text>
+            </Center>
+          )
         ) : (
-          <Center>
-            <Text p={2} fontSize="20px">
-              No comments yet
-            </Text>
-          </Center>
+          <Text>Loading comments...</Text>
         )}
       </Box>
     </>
