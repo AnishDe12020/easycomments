@@ -15,7 +15,7 @@ import Comment from "@/components/Comment"
 
 import { Formik, Form, ErrorMessage } from "formik"
 import { addComment } from "@/utils/db"
-import useSWR from "swr"
+import useSWR, { mutate } from "swr"
 import fetcher from "@/utils/fetcher"
 
 const SiteComments = () => {
@@ -75,7 +75,16 @@ const SiteComments = () => {
             console.log(newComment)
 
             addComment(newComment)
-              .then(
+              .then(() => {
+                mutate(commentsApiUrl, async data => {
+                  return {
+                    comments: [
+                      ...data.comments,
+                      { id: "fake_id", ...newComment },
+                    ],
+                  }
+                })
+
                 toast({
                   title: "Comment added",
                   description: "Your comment has been successfully added",
@@ -83,7 +92,7 @@ const SiteComments = () => {
                   duration: 5000,
                   isClosable: true,
                 })
-              )
+              })
               .catch(error => {
                 console.error(error)
                 toast({
