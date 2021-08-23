@@ -55,8 +55,6 @@ export const getUserComments = async email => {
         )
         .get()
 
-      console.log(snapshot)
-
       snapshot.forEach(doc => {
         comments.push({ id: doc.id, ...doc.data() })
       })
@@ -85,6 +83,18 @@ export const getSiteComments = async (siteId, route) => {
     })
 
     return { comments }
+  } catch (error) {
+    return { error }
+  }
+}
+
+export const getSite = async siteId => {
+  try {
+    const doc = await db.collection("sites").doc(siteId).get()
+
+    const site = { id: doc.id, ...doc.data() }
+
+    return { site }
   } catch (error) {
     return { error }
   }
