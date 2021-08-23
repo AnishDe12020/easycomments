@@ -14,30 +14,8 @@ import Comment from "@/components/Comment"
 
 import { Formik, Form, ErrorMessage } from "formik"
 import { addComment } from "@/utils/db"
-import { getAllSites } from "@/utils/db-admin"
 import useSWR from "swr"
 import fetcher from "@/utils/fetcher"
-
-export const getStaticProps = context => {
-  return {
-    props: {},
-    revalidate: 1,
-  }
-}
-
-export const getStaticPaths = async () => {
-  const { sites } = await getAllSites()
-  const paths = sites.map(site => ({
-    params: {
-      site: [site.id.toString()],
-    },
-  }))
-
-  return {
-    paths,
-    fallback: true,
-  }
-}
 
 const SiteComments = () => {
   const { user } = useUser()
