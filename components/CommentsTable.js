@@ -22,9 +22,9 @@ const CommentsTable = ({ comments }) => {
           <Tr>
             <Th>Author Name</Th>
             <Th>Comment</Th>
-            <Th>Route</Th>
             <Th>Site</Th>
             <Th>Site URL</Th>
+            <Th>Route</Th>
             <Th>Date</Th>
             <Th>{""}</Th>
             <Th>{""}</Th>
@@ -37,14 +37,14 @@ const CommentsTable = ({ comments }) => {
                 <Link>{comment.authorName}</Link>
               </Td>
               <Td>{comment.comment}</Td>
-              <Td>
-                <Code>{comment.route}</Code>
-              </Td>
               <Td>{comment.siteName}</Td>
               <Td>
                 <NextLink href={comment.siteUrl} passHref>
                   <Link>{comment.siteUrl}</Link>
                 </NextLink>
+              </Td>
+              <Td>
+                <Code>{comment.route}</Code>
               </Td>
               <Td>{format(parseISO(comment.createdAt), "PPpp")}</Td>
               <Td>Will be approve comment button</Td>
