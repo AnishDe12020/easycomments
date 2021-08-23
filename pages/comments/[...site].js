@@ -10,7 +10,7 @@ import {
   Center,
 } from "@chakra-ui/react"
 import Header from "@/components/Header"
-import { useRouter } from "next/dist/client/router"
+import { useRouter } from "next/router"
 import Comment from "@/components/Comment"
 
 import { Formik, Form, ErrorMessage } from "formik"
