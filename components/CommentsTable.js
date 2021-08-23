@@ -12,6 +12,7 @@ import {
   Text,
   Code,
 } from "@chakra-ui/react"
+import { format, parseISO } from "date-fns"
 
 const CommentsTable = ({ comments }) => {
   if (comments.length > 0) {
@@ -19,9 +20,12 @@ const CommentsTable = ({ comments }) => {
       <Table>
         <Thead>
           <Tr>
-            <Th>Name</Th>
+            <Th>Author Name</Th>
             <Th>Comment</Th>
             <Th>Route</Th>
+            <Th>Site</Th>
+            <Th>Site URL</Th>
+            <Th>Date</Th>
             <Th>{""}</Th>
             <Th>{""}</Th>
           </Tr>
@@ -36,6 +40,13 @@ const CommentsTable = ({ comments }) => {
               <Td>
                 <Code>{comment.route}</Code>
               </Td>
+              <Td>{comment.siteName}</Td>
+              <Td>
+                <NextLink href={comment.siteUrl} passHref>
+                  <Link>{comment.siteUrl}</Link>
+                </NextLink>
+              </Td>
+              <Td>{format(parseISO(comment.createdAt), "PPpp")}</Td>
               <Td>Will be approve comment button</Td>
               <Td>Will be delete comment button</Td>
             </Tr>
