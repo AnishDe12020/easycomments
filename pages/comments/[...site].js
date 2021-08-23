@@ -31,9 +31,11 @@ const SiteComments = () => {
     ? `/api/comments/${siteId}/${route}`
     : `/api/comments/${siteId}`
 
-  const { data } = useSWR(commentsApiUrl, fetcher)
+  const { data: commentsData } = useSWR(commentsApiUrl, fetcher)
+  const { data: siteData } = useSWR(`/api/site/${siteId}`, fetcher)
 
-  const allComments = data?.comments
+  const allComments = commentsData?.comments
+  console.log(siteData)
 
   const toast = useToast()
 
@@ -59,6 +61,8 @@ const SiteComments = () => {
           onSubmit={async (values, { setSubmitting }) => {
             const newComment = {
               siteId,
+              siteName: siteData?.name,
+              siteUrl: siteData?.url,
               route: route || "/",
               authorName: user.given_name + " " + user.family_name,
               authorEmail: user.email,

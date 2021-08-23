@@ -1,4 +1,5 @@
 import CommentsTable from "@/components/CommentsTable"
+import CommentsTableSkeleton from "@/components/CommentsTableSkeleton"
 import Header from "@/components/Header"
 import fetcher from "@/utils/fetcher"
 import { Box } from "@chakra-ui/react"
@@ -16,7 +17,7 @@ const Comments = () => {
         {data ? (
           <CommentsTable comments={data.comments} />
         ) : (
-          <h1>Loading...</h1>
+          <CommentsTableSkeleton />
         )}
       </Box>
     </>
