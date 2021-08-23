@@ -53,7 +53,7 @@ const CommentsTable = ({ comments }) => {
         alignItems="center"
       >
         <Text pb={8} fontSize="30px">
-          You don't have any comments yet.
+          You don&apos;t have any comments yet.
         </Text>
       </Flex>
     )
