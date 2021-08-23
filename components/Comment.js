@@ -1,4 +1,5 @@
 import { Box, Heading, Text, Flex } from "@chakra-ui/react"
+import { format, parseISO } from "date-fns"
 import React from "react"
 
 const Comment = ({ authorName, comment, createdAt }) => {
@@ -7,7 +8,7 @@ const Comment = ({ authorName, comment, createdAt }) => {
       <Flex align="end" p={0.5}>
         <Heading fontSize="2xl">{authorName}</Heading>
         <Text fontSize="md" ml={2}>
-          {createdAt}
+          {format(parseISO(createdAt), "PPpp")}
         </Text>
       </Flex>
       <Text fontSize="lg" p={0.5}>

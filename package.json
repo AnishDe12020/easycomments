@@ -14,6 +14,7 @@
     "@chakra-ui/react": "^1.6.6",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "date-fns": "^2.23.0",
     "firebase": "^8.10.0",
     "firebase-admin": "^9.11.1",
     "formik": "^2.2.9",
