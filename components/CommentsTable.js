@@ -1,4 +1,4 @@
-import React from "react"
+import React, { cloneElement } from "react"
 import NextLink from "next/link"
 import {
   Table,
@@ -11,11 +11,21 @@ import {
   Flex,
   Text,
   Code,
+  Select,
 } from "@chakra-ui/react"
 import { format, parseISO } from "date-fns"
+import { Form, Formik } from "formik"
 
 const CommentsTable = ({ comments }) => {
+  const selectOptions = [
+    { value: "pending", label: "Pending" },
+    { value: "approved", label: "Approved" },
+    { value: "removed", label: "Removed" },
+  ]
   if (comments.length > 0) {
+    const handleChange = (e, id) => {
+      console.log(e.target.value, id)
+    }
     return (
       <Table>
         <Thead>
@@ -26,8 +36,7 @@ const CommentsTable = ({ comments }) => {
             <Th>Site URL</Th>
             <Th>Route</Th>
             <Th>Date</Th>
-            <Th>{""}</Th>
-            <Th>{""}</Th>
+            <Th>Status</Th>
           </Tr>
         </Thead>
         <Tbody>
@@ -47,8 +56,18 @@ const CommentsTable = ({ comments }) => {
                 <Code>{comment.route}</Code>
               </Td>
               <Td>{format(parseISO(comment.createdAt), "PPpp")}</Td>
-              <Td>Will be approve comment button</Td>
-              <Td>Will be delete comment button</Td>
+              <Td>
+                <Select
+                  onChange={e => handleChange(e, comment.id)}
+                  name="status"
+                >
+                  {selectOptions.map(option => (
+                    <option value={option.value} key={option.value}>
+                      {option.label}
+                    </option>
+                  ))}
+                </Select>
+              </Td>
             </Tr>
           ))}
         </Tbody>
