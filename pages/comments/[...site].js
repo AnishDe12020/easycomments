@@ -48,67 +48,67 @@ const SiteComments = () => {
   return (
     <>
       <Header />
-      {user ? (
-        <Formik
-          initialValues={{ comment: "" }}
-          validate={values => {
-            const errors = {}
-            if (!values.comment) {
-              errors.comment = "Required"
-            }
+      <Box m={8} p={4} flexDirection="column">
+        {user ? (
+          <Formik
+            initialValues={{ comment: "" }}
+            validate={values => {
+              const errors = {}
+              if (!values.comment) {
+                errors.comment = "Required"
+              }
 
-            return errors
-          }}
-          onSubmit={async (values, { setSubmitting }) => {
-            const newComment = {
-              siteId,
-              siteName: siteData?.name,
-              siteUrl: siteData?.url,
-              route: route || "/",
-              authorName: user.given_name + " " + user.family_name,
-              authorEmail: user.email,
-              comment: values.comment,
-              createdAt: new Date().toISOString(),
-              status: "pending",
-            }
+              return errors
+            }}
+            onSubmit={async (values, { setSubmitting }) => {
+              const newComment = {
+                siteId,
+                siteName: siteData?.name,
+                siteUrl: siteData?.url,
+                route: route || "/",
+                authorName: user.given_name + " " + user.family_name,
+                authorEmail: user.email,
+                comment: values.comment,
+                createdAt: new Date().toISOString(),
+                status: "pending",
+              }
 
-            console.log(newComment)
+              console.log(newComment)
 
-            addComment(newComment)
-              .then(() => {
-                mutate(commentsApiUrl, async data => {
-                  return {
-                    comments: [
-                      ...data.comments,
-                      { id: "fake_id", ...newComment },
-                    ],
-                  }
+              addComment(newComment)
+                .then(() => {
+                  mutate(commentsApiUrl, async data => {
+                    return {
+                      comments: [
+                        ...data.comments,
+                        { id: "fake_id", ...newComment },
+                      ],
+                    }
+                  })
+
+                  toast({
+                    title: "Comment added",
+                    description: "Your comment has been successfully added",
+                    status: "success",
+                    duration: 5000,
+                    isClosable: true,
+                  })
                 })
-
-                toast({
-                  title: "Comment added",
-                  description: "Your comment has been successfully added",
-                  status: "success",
-                  duration: 5000,
-                  isClosable: true,
+                .catch(error => {
+                  console.error(error)
+                  toast({
+                    title: "An error occured when adding your comment",
+                    description: error.message,
+                    status: "error",
+                    duration: 5000,
+                    isClosable: true,
+                  })
                 })
-              })
-              .catch(error => {
-                console.error(error)
-                toast({
-                  title: "An error occured when adding your comment",
-                  description: error.message,
-                  status: "error",
-                  duration: 5000,
-                  isClosable: true,
-                })
-              })
-            setSubmitting(false)
-          }}
-        >
-          {({ isSibmitting, handleChange, handleBlur }) => (
-            <Form>
-              <Box m={8} p={4} flexDirection="column">
+              setSubmitting(false)
+            }}
+          >
+            {({ isSibmitting, handleChange, handleBlur }) => (
+              <Form>
                 <Textarea
                   placeholder="Write a comment..."
                   onChange={handleChange}
@@ -119,13 +119,13 @@ const SiteComments = () => {
                 <Button type="submit" mt={4} isLoading={isSibmitting}>
                   Leave a Comment
                 </Button>
-              </Box>
-            </Form>
-          )}
-        </Formik>
-      ) : (
-        <Button onClick={handleLoginClick}>Log in to leave a comment</Button>
-      )}
+              </Form>
+            )}
+          </Formik>
+        ) : (
+          <Button onClick={handleLoginClick}>Log in to leave a comment</Button>
+        )}
+      </Box>
 
       <Box backgroundColor={commentsBg} m={8} borderRadius={16} p={4}>
         {allComments ? (
