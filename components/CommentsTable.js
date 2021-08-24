@@ -12,19 +12,43 @@ import {
   Text,
   Code,
   Select,
+  useToast,
 } from "@chakra-ui/react"
 import { format, parseISO } from "date-fns"
-import { Form, Formik } from "formik"
+import { updateComment } from "@/utils/db"
 
 const CommentsTable = ({ comments }) => {
+  const toast = useToast()
+
   const selectOptions = [
     { value: "pending", label: "Pending" },
     { value: "approved", label: "Approved" },
     { value: "removed", label: "Removed" },
   ]
   if (comments.length > 0) {
-    const handleChange = (e, id) => {
-      console.log(e.target.value, id)
+    const handleChange = async (e, id) => {
+      const { value } = e.target
+      console.log(value, id)
+      await updateComment(id, { status: value })
+        .then(() => {
+          toast({
+            title: "Comment Status Updated",
+            description: `The status of the comment has been changed to ${value}.`,
+            status: "success",
+            duration: 5000,
+            isClosable: true,
+          })
+        })
+        .catch(err => {
+          console.error(err)
+          toast({
+            title: "An error occured",
+            description: err.message,
+            status: "error",
+            duration: 5000,
+            isClosable: true,
+          })
+        })
     }
     return (
       <Table>
