@@ -38,15 +38,15 @@ const Header = () => {
             <NextLink href="#" passHref>
               <Link m={2}>Account</Link>
             </NextLink>
-            <NextLink href="/api/auth/logout" passHref>
-              <Link m={2}>Log Out</Link>
-            </NextLink>
+            <Link href="/api/auth/logout" m={2}>
+              Log Out
+            </Link>
             <Avatar m={2} src={user.picture} />
           </>
         ) : (
-          <NextLink href="/api/auth/login" passHref>
-            <Link m={2}>Log In</Link>
-          </NextLink>
+          <Link href="/api/auth/login" m={2}>
+            Log In
+          </Link>
         )}
       </Flex>
     </Flex>
