@@ -2,6 +2,7 @@ import CommentsTable from "@/components/CommentsTable"
 import CommentsTableSkeleton from "@/components/CommentsTableSkeleton"
 import Header from "@/components/Header"
 import fetcher from "@/utils/fetcher"
+import { withPageAuthRequired } from "@auth0/nextjs-auth0/dist/frontend"
 import { Box } from "@chakra-ui/react"
 import React from "react"
 import useSWR from "swr"
@@ -24,4 +25,4 @@ const Comments = () => {
   )
 }
 
-export default Comments
+export default withPageAuthRequired(Comments)
