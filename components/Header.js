@@ -2,8 +2,9 @@ import React from "react"
 import NextLink from "next/link"
 import { useColorMode, useColorModeValue } from "@chakra-ui/color-mode"
 import { Flex, Link, Avatar, Button } from "@chakra-ui/react"
-import { CopyIcon, SunIcon, MoonIcon } from "@chakra-ui/icons"
+import { SunIcon, MoonIcon } from "@chakra-ui/icons"
 import { useUser } from "@auth0/nextjs-auth0"
+import { Logo } from "@/styles/icons"
 
 const Header = () => {
   const { colorMode, toggleColorMode } = useColorMode()
@@ -20,7 +21,7 @@ const Header = () => {
     >
       <Flex m={4} p={2} justifyContent="space-between" alignItems="center">
         <NextLink href="/" passHref>
-          <CopyIcon m={2} />
+          <Logo m={2} />
         </NextLink>
         <NextLink href="/sites" passHref>
           <Link m={2}>Sites</Link>
