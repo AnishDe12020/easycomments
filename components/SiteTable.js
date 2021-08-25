@@ -12,6 +12,7 @@ import {
   Text,
 } from "@chakra-ui/react"
 import AddSiteModal from "./AddSiteModal"
+import DeleteSiteButton from "./DeleteSiteButton"
 
 const SiteTable = ({ sites }) => {
   if (sites.length > 0) {
@@ -43,7 +44,9 @@ const SiteTable = ({ sites }) => {
                   <Link>View Comments</Link>
                 </NextLink>
               </Td>
-              <Td>Will be delete site button</Td>
+              <Td>
+                <DeleteSiteButton />
+              </Td>
             </Tr>
           ))}
         </Tbody>
