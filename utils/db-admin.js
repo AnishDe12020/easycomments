@@ -91,6 +91,28 @@ export const getSiteComments = async (siteId, route) => {
   }
 }
 
+export const getAllSiteComments = async (siteId, route) => {
+  try {
+    const ref = await db.collection("comments").where("siteId", "==", siteId)
+
+    if (route) {
+      ref = ref.where("route", "==", route)
+    }
+
+    const snapshot = await ref.get()
+
+    const comments = []
+
+    snapshot.forEach(doc => {
+      comments.push({ id: doc.id, ...doc.data() })
+    })
+
+    return { comments }
+  } catch (error) {
+    return { error }
+  }
+}
+
 export const getSite = async siteId => {
   try {
     const doc = await db.collection("sites").doc(siteId).get()
