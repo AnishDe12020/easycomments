@@ -35,18 +35,22 @@ const SiteComments = () => {
   const { data: commentsData } = useSWR(commentsApiUrl, fetcher)
   const { data: siteData } = useSWR(`/api/site/${siteId}`, fetcher)
 
-  const allCommentsData = commentsData.comments
+  let allComments = []
 
-  const othersComments = allCommentsData?.filter(
-    comment =>
-      comment.status === "approved" && comment.authorEmail !== user?.email
-  )
+  if (commentsData) {
+    const allCommentsData = commentsData.comments
 
-  const userComments = allCommentsData.filter(
-    comment => comment.authorEmail === user?.email
-  )
+    const othersComments = allCommentsData.filter(
+      comment =>
+        comment.status === "approved" && comment.authorEmail !== user?.email
+    )
 
-  const allComments = [...userComments, ...othersComments]
+    const userComments = allCommentsData.filter(
+      comment => comment.authorEmail === user?.email
+    )
+
+    allComments = [...userComments, ...othersComments]
+  }
 
   console.log(siteData)
 
@@ -148,6 +152,8 @@ const SiteComments = () => {
                 comment={comment.comment}
                 createdAt={comment.createdAt}
                 key={comment.id}
+                status={comment.status}
+                isOwner={comment.authorEmail === user?.email}
               />
             ))
           ) : (
