@@ -29,7 +29,9 @@ const SiteTable = ({ sites }) => {
           {sites.map(site => (
             <Tr key={site.id}>
               <Td>
-                <Link>{site.name}</Link>
+                <NextLink href={`/comments/${site.id}`} passHref>
+                  <Link>{site.name}</Link>
+                </NextLink>
               </Td>
               <Td>
                 <NextLink href={site.url} passHref>
