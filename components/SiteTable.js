@@ -39,7 +39,9 @@ const SiteTable = ({ sites }) => {
                 </NextLink>
               </Td>
               <Td>
-                <Link>View Comments</Link>
+                <NextLink href={`/sites/${site.id}`} passHref>
+                  <Link>View Comments</Link>
+                </NextLink>
               </Td>
               <Td>Will be delete site button</Td>
             </Tr>
