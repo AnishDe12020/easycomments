@@ -10,7 +10,7 @@ import { useRouter } from "next/router"
 const Comments = () => {
   const router = useRouter()
   const siteId = router.query.siteId
-  const { data } = useSWR(`/api/all-comments/${siteId}`, fetcher)
+  const { data } = useSWR(`/api/comments/${siteId}`, fetcher)
   console.log(data)
 
   return (

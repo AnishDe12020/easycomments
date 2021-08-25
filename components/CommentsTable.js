@@ -35,7 +35,7 @@ const CommentsTable = ({ siteId, comments }) => {
           .then(() => {
             if (siteId) {
               mutate(
-                `/api/all-comments/${siteId}`,
+                `/api/comments/${siteId}`,
                 async () => {
                   const otherComments = comments.filter(
                     comment => comment.id !== id
