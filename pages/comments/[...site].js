@@ -35,7 +35,19 @@ const SiteComments = () => {
   const { data: commentsData } = useSWR(commentsApiUrl, fetcher)
   const { data: siteData } = useSWR(`/api/site/${siteId}`, fetcher)
 
-  const allComments = commentsData?.comments
+  const allCommentsData = commentsData.comments
+
+  const othersComments = allCommentsData?.filter(
+    comment =>
+      comment.status === "approved" && comment.authorEmail !== user?.email
+  )
+
+  const userComments = allCommentsData.filter(
+    comment => comment.authorEmail === user?.email
+  )
+
+  const allComments = [...userComments, ...othersComments]
+
   console.log(siteData)
 
   const toast = useToast()
