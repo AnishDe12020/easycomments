@@ -84,6 +84,7 @@ const CommentsTable = ({ comments }) => {
                 <Select
                   onChange={e => handleChange(e, comment.id)}
                   name="status"
+                  value={comment.status}
                 >
                   {selectOptions.map(option => (
                     <option value={option.value} key={option.value}>
