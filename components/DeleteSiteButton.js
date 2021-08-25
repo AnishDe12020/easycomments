@@ -12,6 +12,7 @@ import {
   useToast,
 } from "@chakra-ui/react"
 import React, { useState, useRef } from "react"
+import { mutate } from "swr"
 
 const DeleteSiteButton = ({ siteId }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -24,6 +25,16 @@ const DeleteSiteButton = ({ siteId }) => {
     console.log(`Deleting site with id ${siteId}`)
     deleteSite(siteId)
       .then(() => {
+        mutate(
+          "/api/sites",
+          async data => {
+            return {
+              sites: data.sites.filter(site => site.id !== siteId),
+            }
+          },
+          false
+        )
+
         toast({
           title: "Site Deleted",
           description: "Your site has been deleted",
@@ -42,7 +53,7 @@ const DeleteSiteButton = ({ siteId }) => {
           isClosable: true,
         })
       })
-    setIsOpen(false)
+    onClose()
   }
 
   const cancelRef = useRef()
