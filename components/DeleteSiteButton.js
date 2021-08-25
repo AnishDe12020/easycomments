@@ -1,3 +1,4 @@
+import { deleteSite } from "@/utils/db"
 import { DeleteIcon } from "@chakra-ui/icons"
 import {
   AlertDialog,
@@ -8,15 +9,42 @@ import {
   AlertDialogFooter,
   IconButton,
   Button,
+  useToast,
 } from "@chakra-ui/react"
 import React, { useState, useRef } from "react"
 
 const DeleteSiteButton = ({ siteId }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const toast = useToast()
   const onClose = () => {
     setIsOpen(false)
-    console.log(siteId)
   }
+
+  const onDeleteConfirm = () => {
+    console.log(`Deleting site with id ${siteId}`)
+    deleteSite(siteId)
+      .then(() => {
+        toast({
+          title: "Site Deleted",
+          description: "Your site has been deleted",
+          status: "success",
+          duration: 5000,
+          isClosable: true,
+        })
+      })
+      .catch(err => {
+        console.error(err)
+        toast({
+          title: "An error occured when deleteing your site",
+          description: err.message,
+          status: "error",
+          duration: 5000,
+          isClosable: true,
+        })
+      })
+    setIsOpen(false)
+  }
+
   const cancelRef = useRef()
 
   return (
@@ -47,7 +75,7 @@ const DeleteSiteButton = ({ siteId }) => {
               <Button ref={cancelRef} onClick={onClose}>
                 Cancel
               </Button>
-              <Button colorScheme="red" onClick={onClose} ml={3}>
+              <Button colorScheme="red" onClick={onDeleteConfirm} ml={3}>
                 Delete
               </Button>
             </AlertDialogFooter>

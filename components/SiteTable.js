@@ -45,7 +45,7 @@ const SiteTable = ({ sites }) => {
                 </NextLink>
               </Td>
               <Td>
-                <DeleteSiteButton />
+                <DeleteSiteButton siteId={site.id} />
               </Td>
             </Tr>
           ))}
