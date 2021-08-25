@@ -18,7 +18,7 @@ const Comments = () => {
       <Header />
       <Box mx={32} my={8} p={4} direction="column">
         {data ? (
-          <CommentsTable comments={data.comments} />
+          <CommentsTable siteId={siteId} comments={data.comments} />
         ) : (
           <CommentsTableSkeleton />
         )}

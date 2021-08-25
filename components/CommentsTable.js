@@ -16,8 +16,9 @@ import {
 } from "@chakra-ui/react"
 import { format, parseISO } from "date-fns"
 import { updateComment } from "@/utils/db"
+import { mutate } from "swr"
 
-const CommentsTable = ({ comments }) => {
+const CommentsTable = ({ siteId, comments }) => {
   const toast = useToast()
 
   const selectOptions = [
@@ -25,93 +26,137 @@ const CommentsTable = ({ comments }) => {
     { value: "approved", label: "Approved" },
     { value: "removed", label: "Removed" },
   ]
-  if (comments.length > 0) {
-    const handleChange = async (e, id) => {
-      const { value } = e.target
-      console.log(value, id)
-      await updateComment(id, { status: value })
-        .then(() => {
-          toast({
-            title: "Comment Status Updated",
-            description: `The status of the comment has been changed to ${value}.`,
-            status: "success",
-            duration: 5000,
-            isClosable: true,
+  if (comments) {
+    if (comments.length > 0) {
+      const handleChange = async (e, id) => {
+        const { value } = e.target
+        console.log(value, id)
+        await updateComment(id, { status: value })
+          .then(() => {
+            if (siteId) {
+              mutate(
+                `/api/all-comments/${siteId}`,
+                async () => {
+                  const otherComments = comments.filter(
+                    comment => comment.id !== id
+                  )
+                  return {
+                    comments: [
+                      ...otherComments,
+                      {
+                        ...comments.find(comment => comment.id === id),
+                        status: value,
+                      },
+                    ],
+                  }
+                },
+                false
+              )
+            } else {
+              mutate(
+                "/api/comments",
+                async () => {
+                  const otherComments = comments.filter(
+                    comment => comment.id !== id
+                  )
+                  return {
+                    comments: [
+                      ...otherComments,
+                      {
+                        ...comments.find(comment => comment.id === id),
+                        status: value,
+                      },
+                    ],
+                  }
+                },
+                false
+              )
+            }
+
+            toast({
+              title: "Comment Status Updated",
+              description: `The status of the comment has been changed to ${value}.`,
+              status: "success",
+              duration: 5000,
+              isClosable: true,
+            })
           })
-        })
-        .catch(err => {
-          console.error(err)
-          toast({
-            title: "An error occured",
-            description: err.message,
-            status: "error",
-            duration: 5000,
-            isClosable: true,
+          .catch(err => {
+            console.error(err)
+            toast({
+              title: "An error occured",
+              description: err.message,
+              status: "error",
+              duration: 5000,
+              isClosable: true,
+            })
           })
-        })
-    }
-    return (
-      <Table>
-        <Thead>
-          <Tr>
-            <Th>Author Name</Th>
-            <Th>Comment</Th>
-            <Th>Site</Th>
-            <Th>Site URL</Th>
-            <Th>Route</Th>
-            <Th>Date</Th>
-            <Th>Status</Th>
-          </Tr>
-        </Thead>
-        <Tbody>
-          {comments.map(comment => (
-            <Tr key={comment.id}>
-              <Td>
-                <Link>{comment.authorName}</Link>
-              </Td>
-              <Td>{comment.comment}</Td>
-              <Td>{comment.siteName}</Td>
-              <Td>
-                <NextLink href={comment.siteUrl} passHref>
-                  <Link>{comment.siteUrl}</Link>
-                </NextLink>
-              </Td>
-              <Td>
-                <Code>{comment.route}</Code>
-              </Td>
-              <Td>{format(parseISO(comment.createdAt), "PPpp")}</Td>
-              <Td>
-                <Select
-                  onChange={e => handleChange(e, comment.id)}
-                  name="status"
-                  value={comment.status}
-                >
-                  {selectOptions.map(option => (
-                    <option value={option.value} key={option.value}>
-                      {option.label}
-                    </option>
-                  ))}
-                </Select>
-              </Td>
+      }
+      return (
+        <Table>
+          <Thead>
+            <Tr>
+              <Th>Author Name</Th>
+              <Th>Comment</Th>
+              <Th>Site</Th>
+              <Th>Site URL</Th>
+              <Th>Route</Th>
+              <Th>Date</Th>
+              <Th>Status</Th>
             </Tr>
-          ))}
-        </Tbody>
-      </Table>
-    )
+          </Thead>
+          <Tbody>
+            {comments.map(comment => (
+              <Tr key={comment.id}>
+                <Td>
+                  <Link>{comment.authorName}</Link>
+                </Td>
+                <Td>{comment.comment}</Td>
+                <Td>{comment.siteName}</Td>
+                <Td>
+                  <NextLink href={comment.siteUrl} passHref>
+                    <Link>{comment.siteUrl}</Link>
+                  </NextLink>
+                </Td>
+                <Td>
+                  <Code>{comment.route}</Code>
+                </Td>
+                <Td>{format(parseISO(comment.createdAt), "PPpp")}</Td>
+                <Td>
+                  <Select
+                    onChange={e => handleChange(e, comment.id)}
+                    name="status"
+                    value={comment.status}
+                  >
+                    {selectOptions.map(option => (
+                      <option value={option.value} key={option.value}>
+                        {option.label}
+                      </option>
+                    ))}
+                  </Select>
+                </Td>
+              </Tr>
+            ))}
+          </Tbody>
+        </Table>
+      )
+    } else {
+      return (
+        <Flex
+          direction="column"
+          p={4}
+          m={4}
+          justifyContent="space-between"
+          alignItems="center"
+        >
+          <Text pb={8} fontSize="30px">
+            You don&apos;t have any comments yet.
+          </Text>
+        </Flex>
+      )
+    }
   } else {
-    return (
-      <Flex
-        direction="column"
-        p={4}
-        m={4}
-        justifyContent="space-between"
-        alignItems="center"
-      >
-        <Text pb={8} fontSize="30px">
-          You don&apos;t have any comments yet.
-        </Text>
-      </Flex>
-    )
+    return <h1>Loading</h1>
   }
 }
 
