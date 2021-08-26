@@ -42,7 +42,7 @@ const Header = () => {
             <Link href="/api/auth/logout" m={2}>
               Log Out
             </Link>
-            <Avatar m={2} src={user.picture} />
+            <Avatar m={2} src={user.picture} alt="avatar" />
           </>
         ) : (
           <Link href="/api/auth/login" m={2}>
