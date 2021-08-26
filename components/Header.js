@@ -17,9 +17,14 @@ const Header = () => {
       alignItems="center"
       justifyContent="space-between"
       backgroundColor={headerBg}
-      h="80px"
+      h={{ sm: "50px", md: "60px", lg: "80px" }}
     >
-      <Flex m={4} p={2} justifyContent="space-between" alignItems="center">
+      <Flex
+        m={{ sm: 1, md: 2, lg: 4 }}
+        p={{ sm: 0.5, md: 1, lg: 2 }}
+        justifyContent="space-between"
+        alignItems="center"
+      >
         <NextLink href="/" passHref>
           <Logo color="white" m={2} />
         </NextLink>
@@ -33,21 +38,26 @@ const Header = () => {
       <Button onClick={toggleColorMode}>
         {colorMode === "light" ? <SunIcon /> : <MoonIcon />}
       </Button>
-      <Flex justifyContent="space-between" alignItems="center" m={8} p={4}>
+      <Flex
+        justifyContent="space-between"
+        alignItems="center"
+        m={{ sm: 2, md: 4, lg: 8 }}
+        p={{ sm: 1, md: 2, lg: 4 }}
+      >
         {user ? (
           <>
             <NextLink href="#" passHref>
-              <Link m={2}>Account</Link>
+              <Link>Account</Link>
             </NextLink>
-            <Link href="/api/auth/logout" m={2}>
-              Log Out
-            </Link>
-            <Avatar m={2} src={user.picture} alt="avatar" />
+            <Link href="/api/auth/logout">Log Out</Link>
+            <Avatar
+              m={{ sm: 0.5, md: 1, lg: 2 }}
+              src={user.picture}
+              alt="avatar"
+            />
           </>
         ) : (
-          <Link href="/api/auth/login" m={2}>
-            Log In
-          </Link>
+          <Link href="/api/auth/login">Log In</Link>
         )}
       </Flex>
     </Flex>
