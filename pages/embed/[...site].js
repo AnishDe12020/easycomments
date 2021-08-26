@@ -1,21 +1,10 @@
-import React, { useEffect } from "react"
+import React from "react"
 import { useUser } from "@auth0/nextjs-auth0"
-import {
-  Textarea,
-  Text,
-  Button,
-  useToast,
-  useColorModeValue,
-  Box,
-  Center,
-} from "@chakra-ui/react"
-import Header from "@/components/Header"
+import { Text, useColorModeValue, Box, Center } from "@chakra-ui/react"
 import { useRouter } from "next/router"
 import Comment from "@/components/Comment"
 
-import { Formik, Form, ErrorMessage } from "formik"
-import { addComment } from "@/utils/db"
-import useSWR, { mutate } from "swr"
+import useSWR from "swr"
 import fetcher from "@/utils/fetcher"
 import CommentsLink from "@/components/CommentsLink"
 
@@ -55,17 +44,10 @@ const SiteComments = () => {
 
   console.log(siteData)
 
-  const toast = useToast()
-
-  const handleLoginClick = e => {
-    e.preventDefault()
-    router.push("/api/auth/login")
-  }
-
   return (
     <>
       <CommentsLink />
-      <Box backgroundColor={commentsBg} p={4}>
+      <Box backgroundColor={commentsBg} p={4} m={2} borderRadius={4}>
         {allComments ? (
           allComments.length > 0 ? (
             allComments.map(comment => (
