@@ -46,7 +46,7 @@ const SiteComments = () => {
 
   return (
     <>
-      <CommentsLink />
+      <CommentsLink paths={router?.query?.site || []} />
       <Box backgroundColor={commentsBg} p={4} m={2} borderRadius={4}>
         {allComments ? (
           allComments.length > 0 ? (
