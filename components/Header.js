@@ -21,7 +21,7 @@ const Header = () => {
     >
       <Flex m={4} p={2} justifyContent="space-between" alignItems="center">
         <NextLink href="/" passHref>
-          <Logo m={2} />
+          <Logo color="white" m={2} />
         </NextLink>
         <NextLink href="/sites" passHref>
           <Link m={2}>Sites</Link>
