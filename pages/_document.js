@@ -8,8 +8,8 @@ export default class Document extends NextDocument {
       <Html lang="en">
         <Head>
           <link rel="manifest" href="/manifest.json" />
-          <link rel="apple-touch-icon" href="/icon-192X192.png"></link>
-          <meta name="theme-color" content="#fff" />
+          <link rel="apple-touch-icon" href="/icon-192X192.png" />
+          <meta name="theme-color" content="#000" />
         </Head>
         <body>
           <ColorModeScript initialColorMode={theme.config.initialColorMode} />
