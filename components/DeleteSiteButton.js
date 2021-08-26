@@ -78,8 +78,8 @@ const DeleteSiteButton = ({ siteId }) => {
             </AlertDialogHeader>
 
             <AlertDialogBody>
-              Are you sure? You can't undo this action afterwards. All feedback
-              corresponding to this site will also be deleted.
+              Are you sure? You can&apos;t undo this action afterwards. All
+              feedback corresponding to this site will also be deleted.
             </AlertDialogBody>
 
             <AlertDialogFooter>
