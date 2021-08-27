@@ -1,5 +1,6 @@
 import Header from "@/components/Header"
 import { Box, Flex } from "@chakra-ui/react"
+import IframeResizer from "iframe-resizer-react"
 import Head from "next/head"
 import React from "react"
 
@@ -23,10 +24,15 @@ export default function Home() {
         </h3>
       </Flex>
       <Box m={8} height="100%">
-        <iframe
-          height="100%"
-          width="100%"
+        <IframeResizer
+          style={{
+            width: "1px",
+            minWidth: "100%",
+            height: "1px",
+            minHeight: "100%",
+          }}
           src={process.env.NEXT_PUBLIC_SITE_EMBED_URL}
+          title="Comments"
         />
       </Box>
     </Box>

@@ -8,6 +8,8 @@ import useSWR from "swr"
 import fetcher from "@/utils/fetcher"
 import CommentsLink from "@/components/CommentsLink"
 
+import "iframe-resizer/js/iframeResizer.contentWindow"
+
 const SiteComments = () => {
   const { user } = useUser()
   const router = useRouter()
