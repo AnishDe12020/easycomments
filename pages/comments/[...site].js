@@ -93,14 +93,7 @@ const SiteComments = () => {
 
               addComment(newComment)
                 .then(() => {
-                  mutate(commentsApiUrl, async data => {
-                    return {
-                      comments: [
-                        ...data.comments,
-                        { id: "fake_id", ...newComment },
-                      ],
-                    }
-                  })
+                  mutate(commentsApiUrl)
 
                   toast({
                     title: "Comment added",
