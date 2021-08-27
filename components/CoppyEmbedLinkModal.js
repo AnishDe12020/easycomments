@@ -7,7 +7,7 @@ import {
   ModalFooter,
   ModalBody,
   ModalCloseButton,
-  Text,
+  Select,
   Button,
   Input,
   Flex,
@@ -18,10 +18,15 @@ import React, { useState } from "react"
 
 const CopyEmbedLinkModal = ({ site }) => {
   const [route, setRoute] = useState("/")
+  const [preferredColorMode, setPreferredColorMode] = useState()
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  const handleChange = e => {
+  const handleRouteChanged = e => {
     setRoute(e.target.value)
+  }
+
+  const handleColorModeChange = e => {
+    setPreferredColorMode(e.target.value)
   }
 
   return (
@@ -34,13 +39,21 @@ const CopyEmbedLinkModal = ({ site }) => {
           <ModalHeader>{site.title}</ModalHeader>
           <ModalCloseButton />
           <ModalBody m={2}>
-            <Input name="route" value={route} onChange={handleChange} />
+            <Input name="route" value={route} onChange={handleRouteChanged} />
+            <Select mt={2} name="colorMode" onChange={handleColorModeChange}>
+              <option value="">No preferred color mode</option>
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+            </Select>
 
             <Flex mt={4}>
               <Input
-                value={`https://easycomments.anishde.dev/${site.id}${route}`}
+                value={`https://easycomments.anishde.dev/${site.id}${route}${
+                  preferredColorMode ? "?colormode=" + preferredColorMode : ""
+                }`}
+                readOnly
               />
-              <IconButton variant="ghost" icon={<CopyIcon />} />
+              <IconButton icon={<CopyIcon />} />
             </Flex>
           </ModalBody>
 
