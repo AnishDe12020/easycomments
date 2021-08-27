@@ -61,14 +61,14 @@ const SiteComments = () => {
               />
             ))
           ) : (
-            <Text>Loading comments...</Text>
+            <Center>
+              <Text p={2} fontSize="20px">
+                No comments yet
+              </Text>
+            </Center>
           )
         ) : (
-          <Center>
-            <Text p={2} fontSize="20px">
-              No comments yet
-            </Text>
-          </Center>
+          <Text>Loading comments...</Text>
         )}
       </Box>
     </>
