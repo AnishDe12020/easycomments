@@ -60,16 +60,7 @@ const AddSiteModal = ({ children }) => {
             }
             await createSite(newSite)
               .then(() => {
-                onClose()
-                mutate(
-                  "/api/sites",
-                  async data => {
-                    return {
-                      sites: [...data.sites, { id: "fake_id", ...newSite }],
-                    }
-                  },
-                  false
-                )
+                mutate("/api/sites")
 
                 toast({
                   title: "Site Added",
@@ -78,6 +69,7 @@ const AddSiteModal = ({ children }) => {
                   duration: 5000,
                   isClosable: true,
                 })
+                onClose()
               })
               .catch(error => {
                 console.error(error)
