@@ -48,8 +48,10 @@ const CopyEmbedLinkModal = ({ site }) => {
 
             <Flex mt={4}>
               <Input
-                value={`https://easycomments.anishde.dev/${site.id}${route}${
-                  preferredColorMode ? "?colormode=" + preferredColorMode : ""
+                value={`https://easycomments.anishde.dev/embed/${
+                  site.id
+                }${route}${
+                  preferredColorMode ? "?colorMode=" + preferredColorMode : ""
                 }`}
                 readOnly
               />
