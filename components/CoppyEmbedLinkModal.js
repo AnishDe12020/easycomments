@@ -53,7 +53,7 @@ const CopyEmbedLinkModal = ({ site }) => {
                 }`}
                 readOnly
               />
-              <IconButton icon={<CopyIcon />} />
+              <IconButton ml={2} icon={<CopyIcon />} />
             </Flex>
           </ModalBody>
 
