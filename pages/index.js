@@ -1,6 +1,7 @@
 import Header from "@/components/Header"
 import { Box, Flex } from "@chakra-ui/react"
 import Head from "next/head"
+import React from "react"
 
 export default function Home() {
   return (
@@ -21,6 +22,13 @@ export default function Home() {
           to your site
         </h3>
       </Flex>
+      <Box m={8} height="100%">
+        <iframe
+          height="100%"
+          width="100%"
+          src={process.env.NEXT_PUBLIC_SITE_EMBED_URL}
+        />
+      </Box>
     </Box>
   )
 }
