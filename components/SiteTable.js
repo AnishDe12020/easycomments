@@ -47,10 +47,10 @@ const SiteTable = ({ sites }) => {
                 </NextLink>
               </Td>
               <Td>
-                <DeleteSiteButton siteId={site.id} />
+                <CopyEmbedLinkModal site={site} />
               </Td>
               <Td>
-                <CopyEmbedLinkModal site={site} />
+                <DeleteSiteButton siteId={site.id} />
               </Td>
             </Tr>
           ))}
