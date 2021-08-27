@@ -1,6 +1,12 @@
 import React from "react"
 import { useUser } from "@auth0/nextjs-auth0"
-import { Text, useColorModeValue, Box, Center } from "@chakra-ui/react"
+import {
+  Text,
+  useColorModeValue,
+  Box,
+  Center,
+  useColorMode,
+} from "@chakra-ui/react"
 import { useRouter } from "next/router"
 import Comment from "@/components/Comment"
 
@@ -14,11 +20,23 @@ const SiteComments = () => {
   const { user } = useUser()
   const router = useRouter()
 
+  const { colorMode, toggleColorMode } = useColorMode()
+
   const commentsBg = useColorModeValue("gray.100", "gray.900")
 
   const siteAndRoute = router.query?.site
+  const preferredColorMode = router.query?.colorMode
   const siteId = siteAndRoute ? siteAndRoute[0] : null
   const route = siteAndRoute ? siteAndRoute[1] : null
+
+  console.log("e", colorMode, preferredColorMode)
+
+  if (preferredColorMode) {
+    if (colorMode !== preferredColorMode) {
+      console.log("toggle")
+      toggleColorMode()
+    }
+  }
 
   const commentsApiUrl = route
     ? `/api/comments/${siteId}/${route}`
