@@ -13,6 +13,7 @@ import {
 } from "@chakra-ui/react"
 import AddSiteModal from "./AddSiteModal"
 import DeleteSiteButton from "./DeleteSiteButton"
+import CopyEmbedLinkModal from "./CoppyEmbedLinkModal"
 
 const SiteTable = ({ sites }) => {
   if (sites.length > 0) {
@@ -23,6 +24,7 @@ const SiteTable = ({ sites }) => {
             <Th>Name</Th>
             <Th>URL</Th>
             <Th>Comments</Th>
+            <Th>{""}</Th>
             <Th>{""}</Th>
           </Tr>
         </Thead>
@@ -46,6 +48,9 @@ const SiteTable = ({ sites }) => {
               </Td>
               <Td>
                 <DeleteSiteButton siteId={site.id} />
+              </Td>
+              <Td>
+                <CopyEmbedLinkModal site={site} />
               </Td>
             </Tr>
           ))}
