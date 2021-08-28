@@ -1,6 +1,8 @@
-import { Text, Stack, Flex } from "@chakra-ui/react"
+import { Text, Stack, Flex, useColorModeValue } from "@chakra-ui/react"
 
 const Feature = ({ title, text, icon }) => {
+  const textColor = useColorModeValue("gray.700", "gray.300")
+  const iconColor = useColorModeValue("black", "white")
   return (
     <Stack>
       <Flex
@@ -8,15 +10,14 @@ const Feature = ({ title, text, icon }) => {
         h={16}
         align={"center"}
         justify={"center"}
-        color={"white"}
+        color={iconColor}
         rounded={"full"}
-        bg={"gray.100"}
         mb={1}
       >
         {icon}
       </Flex>
       <Text fontWeight={600}>{title}</Text>
-      <Text color={"gray.600"}>{text}</Text>
+      <Text color={textColor}>{text}</Text>
     </Stack>
   )
 }
