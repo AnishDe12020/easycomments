@@ -1,8 +1,21 @@
-import { Box, Heading, Text, Flex, Badge, Avatar } from "@chakra-ui/react"
+import {
+  Box,
+  Heading,
+  Text,
+  Flex,
+  Badge,
+  Avatar,
+  useColorMode,
+} from "@chakra-ui/react"
 import { format, parseISO } from "date-fns"
 import React from "react"
 import ReactMarkdown from "react-markdown"
 import remarkGfm from "remark-gfm"
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter"
+import {
+  dracula,
+  solarizedlight,
+} from "react-syntax-highlighter/dist/esm/styles/prism"
 
 const Comment = ({
   authorName,
@@ -12,6 +25,7 @@ const Comment = ({
   status,
   isOwner,
 }) => {
+  const { colorMode } = useColorMode()
   return (
     <Box m={8} p={4}>
       <Flex align="end" p={0.5}>
@@ -42,7 +56,28 @@ const Comment = ({
           </Badge>
         )}
       </Flex>
-      <ReactMarkdown children={comment} remarkPlugins={[remarkGfm]} />
+      <ReactMarkdown
+        children={comment}
+        remarkPlugins={[remarkGfm]}
+        components={{
+          code({ node, inline, className, children, ...props }) {
+            const match = /language-(\w+)/.exec(className || "")
+            return !inline && match ? (
+              <SyntaxHighlighter
+                children={String(children).replace(/\n$/, "")}
+                language={match[1]}
+                style={colorMode === "light" ? solarizedlight : dracula}
+                PreTag="div"
+                {...props}
+              />
+            ) : (
+              <code className={className} {...props}>
+                {children}
+              </code>
+            )
+          },
+        }}
+      />
     </Box>
   )
 }
