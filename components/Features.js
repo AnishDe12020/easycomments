@@ -21,7 +21,7 @@ const Features = props => {
     {
       id: 3,
       title: "Easy to use",
-      text: "The main goal of the project was to make it as easy to use as possible. Just sign up, add a site, copy the embed url and create a iframe or an IframeResizer component on your site and start receiving comments!!!",
+      text: "The main goal of the project was to make it as easy to use as possible. Just sign up, add a site, copy the embed URL and create an iframe or an IframeResizer component on your site and start receiving comments!!!",
       icon: <Icon as={FaLemon} w={10} h={10} />,
     },
     {
