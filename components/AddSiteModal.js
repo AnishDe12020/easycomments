@@ -12,6 +12,7 @@ import {
   FormControl,
   FormLabel,
   Input,
+  Switch,
   useToast,
 } from "@chakra-ui/react"
 import { Formik, Form, ErrorMessage } from "formik"
@@ -34,7 +35,13 @@ const AddSiteModal = ({ children }) => {
       <Modal initialFocusRef={initialRef} isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <Formik
-          initialValues={{ siteName: "", siteUrl: "" }}
+          initialValues={{
+            siteName: "",
+            siteUrl: "",
+            showDate: true,
+            showTime: true,
+            showAvatar: true,
+          }}
           validate={values => {
             const errors = {}
             if (!values.siteName) {
@@ -51,12 +58,20 @@ const AddSiteModal = ({ children }) => {
             }
             return errors
           }}
-          onSubmit={async ({ siteName, siteUrl }, { setSubmitting }) => {
+          onSubmit={async (
+            { siteName, siteUrl, showDate, showTime, showAvatar },
+            { setSubmitting }
+          ) => {
             const newSite = {
               authorEmail: user.email,
               createdAt: new Date().toISOString(),
               name: siteName,
               url: siteUrl,
+              settings: {
+                showDate,
+                showTime,
+                showAvatar,
+              },
             }
             await createSite(newSite)
               .then(() => {
@@ -114,6 +129,36 @@ const AddSiteModal = ({ children }) => {
                       name="siteUrl"
                     />
                     <ErrorMessage name="siteUrl" />
+                  </FormControl>
+
+                  <FormControl mt={4}>
+                    <FormLabel>Show Date</FormLabel>
+                    <Switch
+                      name="showDate"
+                      isChecked={values.showDate}
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                    />
+                  </FormControl>
+
+                  <FormControl mt={4}>
+                    <FormLabel>Show Time</FormLabel>
+                    <Switch
+                      name="showTime"
+                      isChecked={values.showTime}
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                    />
+                  </FormControl>
+
+                  <FormControl mt={4}>
+                    <FormLabel>Show Avatar</FormLabel>
+                    <Switch
+                      name="showAvatar"
+                      isChecked={values.showAvatar}
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                    />
                   </FormControl>
                 </ModalBody>
 
