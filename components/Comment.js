@@ -24,18 +24,29 @@ const Comment = ({
   createdAt,
   status,
   isOwner,
+  siteSettings,
 }) => {
   const { colorMode } = useColorMode()
+  console.log("e", siteSettings)
   return (
     <Box m={8} p={4}>
       <Flex align="end" p={0.5}>
-        <Avatar src={authorAvatar} size="xs" mb={1} />
-        <Heading fontSize="2xl" ml={2}>
-          {authorName}
-        </Heading>
-        <Text fontSize="md" ml={2}>
-          {format(parseISO(createdAt), "PPpp")}
-        </Text>
+        {siteSettings.showAvatar && (
+          <Avatar src={authorAvatar} size="xs" mb={1} mr={2} />
+        )}
+        <Heading fontSize="2xl">{authorName}</Heading>
+        {(siteSettings.showDate || siteSettings.showTime) && (
+          <Text fontSize="md" ml={2}>
+            {format(
+              parseISO(createdAt),
+              siteSettings.showDate && siteSettings.showTime
+                ? "PPpp"
+                : siteSettings.showDate
+                ? "PPP"
+                : "pp"
+            )}
+          </Text>
+        )}
         {isOwner && (
           <Badge
             colorScheme={

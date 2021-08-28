@@ -79,6 +79,7 @@ const SiteComments = () => {
                 key={comment.id}
                 status={comment.status}
                 isOwner={comment.authorEmail === user?.email}
+                siteSettings={siteData.settings}
               />
             ))
           ) : (

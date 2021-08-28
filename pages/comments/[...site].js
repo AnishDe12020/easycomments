@@ -138,7 +138,7 @@ const SiteComments = () => {
       </Box>
 
       <Box backgroundColor={commentsBg} m={8} borderRadius={16} p={4}>
-        {allComments ? (
+        {allComments && siteData ? (
           allComments.length > 0 ? (
             allComments.map(comment => (
               <Comment
@@ -149,6 +149,7 @@ const SiteComments = () => {
                 key={comment.id}
                 status={comment.status}
                 isOwner={comment.authorEmail === user?.email}
+                siteSettings={siteData.settings}
               />
             ))
           ) : (
