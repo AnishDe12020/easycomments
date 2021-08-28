@@ -14,6 +14,7 @@ import {
 import AddSiteModal from "./AddSiteModal"
 import DeleteSiteButton from "./DeleteSiteButton"
 import CopyEmbedLinkModal from "./CoppyEmbedLinkModal"
+import EditSiteModal from "./EditSiteModal"
 
 const SiteTable = ({ sites }) => {
   if (sites.length > 0) {
@@ -24,6 +25,7 @@ const SiteTable = ({ sites }) => {
             <Th>Name</Th>
             <Th>URL</Th>
             <Th>Comments</Th>
+            <Th>{""}</Th>
             <Th>{""}</Th>
             <Th>{""}</Th>
           </Tr>
@@ -45,6 +47,9 @@ const SiteTable = ({ sites }) => {
                 <NextLink href={`/sites/${site.id}`} passHref>
                   <Link>View Comments</Link>
                 </NextLink>
+              </Td>
+              <Td>
+                <EditSiteModal site={site}>Edit site</EditSiteModal>
               </Td>
               <Td>
                 <CopyEmbedLinkModal site={site} />

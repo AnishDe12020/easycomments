@@ -4,6 +4,10 @@ export const createSite = async data => {
   return await firestore.collection("sites").add(data)
 }
 
+export const updateSite = async (id, newData) => {
+  return await firestore.collection("sites").doc(id).update(newData)
+}
+
 export const addComment = async data => {
   return await firestore.collection("comments").add(data)
 }
