@@ -84,6 +84,7 @@ const SiteComments = () => {
                 route: route || "/",
                 authorName: user.given_name + " " + user.family_name,
                 authorEmail: user.email,
+                authorAvatar: user.picture,
                 comment: values.comment,
                 createdAt: new Date().toISOString(),
                 status: "pending",
@@ -142,6 +143,7 @@ const SiteComments = () => {
             allComments.map(comment => (
               <Comment
                 authorName={comment.authorName}
+                authorAvatar={comment.authorAvatar}
                 comment={comment.comment}
                 createdAt={comment.createdAt}
                 key={comment.id}

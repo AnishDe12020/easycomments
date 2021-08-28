@@ -73,6 +73,7 @@ const SiteComments = () => {
             allComments.map(comment => (
               <Comment
                 authorName={comment.authorName}
+                authorAvatar={comment.authorAvatar}
                 comment={comment.comment}
                 createdAt={comment.createdAt}
                 key={comment.id}
