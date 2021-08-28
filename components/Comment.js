@@ -1,6 +1,8 @@
 import { Box, Heading, Text, Flex, Badge, Avatar } from "@chakra-ui/react"
 import { format, parseISO } from "date-fns"
 import React from "react"
+import ReactMarkdown from "react-markdown"
+import remarkGfm from "remark-gfm"
 
 const Comment = ({
   authorName,
@@ -40,9 +42,7 @@ const Comment = ({
           </Badge>
         )}
       </Flex>
-      <Text fontSize="lg" p={0.5}>
-        {comment}
-      </Text>
+      <ReactMarkdown children={comment} remarkPlugins={[remarkGfm]} />
     </Box>
   )
 }
