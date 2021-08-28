@@ -68,7 +68,6 @@ const Comment = ({
         )}
       </Flex>
       <ReactMarkdown
-        children={comment}
         remarkPlugins={[remarkGfm]}
         components={{
           code({ node, inline, className, children, ...props }) {
@@ -88,7 +87,9 @@ const Comment = ({
             )
           },
         }}
-      />
+      >
+        {comment}
+      </ReactMarkdown>
     </Box>
   )
 }

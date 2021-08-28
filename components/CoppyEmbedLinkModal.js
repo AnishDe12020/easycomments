@@ -29,7 +29,7 @@ const CopyEmbedLinkModal = ({ site }) => {
         preferredColorMode ? "?colorMode=" + preferredColorMode : ""
       }`
     )
-  }, [route, preferredColorMode])
+  }, [site.id, route, preferredColorMode])
 
   const { hasCopied, onCopy } = useClipboard(url)
 
