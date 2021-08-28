@@ -1,3 +1,4 @@
+import Features from "@/components/Features"
 import Header from "@/components/Header"
 import { Box, Flex } from "@chakra-ui/react"
 import IframeResizer from "iframe-resizer-react"
@@ -22,6 +23,7 @@ export default function Home() {
           Easy Comments provides you with an easy and quick way to add comments
           to your site
         </h3>
+        <Features mt={8} />
       </Flex>
       <Box m={8} height="100%">
         <IframeResizer
