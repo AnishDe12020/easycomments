@@ -74,12 +74,13 @@ const Comment = ({
             const match = /language-(\w+)/.exec(className || "")
             return !inline && match ? (
               <SyntaxHighlighter
-                children={String(children).replace(/\n$/, "")}
                 language={match[1]}
                 style={colorMode === "light" ? solarizedlight : dracula}
                 PreTag="div"
                 {...props}
-              />
+              >
+                {String(children).replace(/\n$/, "")}
+              </SyntaxHighlighter>
             ) : (
               <code className={className} {...props}>
                 {children}
