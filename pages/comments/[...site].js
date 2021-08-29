@@ -19,6 +19,7 @@ import { Formik, Form, ErrorMessage } from "formik"
 import { addComment } from "@/utils/db"
 import useSWR, { mutate } from "swr"
 import fetcher from "@/utils/fetcher"
+import { NextSeo } from "next-seo"
 
 const SiteComments = () => {
   const { user } = useUser()
@@ -64,6 +65,10 @@ const SiteComments = () => {
   return (
     <>
       <Header />
+      <NextSeo
+        title="Easy Comments"
+        description="A web app that allows you to easily and quickly add comments to your site"
+      />
       <Box m={8} p={4} flexDirection="column">
         {user ? (
           <Formik

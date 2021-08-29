@@ -4,18 +4,18 @@ import { Box, Flex, Heading, Center } from "@chakra-ui/react"
 import IframeResizer from "iframe-resizer-react"
 import Head from "next/head"
 import React from "react"
+import { NextSeo } from "next-seo"
 
 export default function Home() {
   return (
     <Box h="100vh">
       <Head>
-        <title>Easy Comments</title>
-        <meta
-          name="description"
-          content="A web app that allows you to easily and quickly add comments to your site"
-        />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <NextSeo
+        title="Easy Comments"
+        description="A web app that allows you to easily and quickly add comments to your site"
+      />
       <Header />
       <Flex as="main" p={8} direction="column" margin="0 auto" maxW="800px">
         <Center>
