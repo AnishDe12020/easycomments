@@ -111,7 +111,11 @@ const CommentsTable = ({ siteId, comments }) => {
                 <Td>
                   <Link>{comment.authorName}</Link>
                 </Td>
-                <Td>{comment.comment}</Td>
+                <Td>
+                  <Text w={{ sm: 32, md: 64, lg: 128, xl: 256 }}>
+                    {comment.comment}
+                  </Text>
+                </Td>
                 <Td>{comment.siteName}</Td>
                 <Td>
                   <NextLink href={comment.siteUrl} passHref>
