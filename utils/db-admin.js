@@ -67,13 +67,11 @@ export const getAllComments = async email => {
 
 export const getSiteComments = async (siteId, route) => {
   try {
-    let ref = db.collection("comments").where("siteId", "==", siteId)
-
-    if (route) {
-      ref = ref.where("route", "==", route)
-    }
-
-    const snapshot = await ref.get()
+    const snapshot = await db
+      .collection("comments")
+      .where("siteId", "==", siteId)
+      .where("route", "==", route ? route : "/")
+      .get()
 
     const comments = []
 
