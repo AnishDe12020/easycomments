@@ -20,9 +20,10 @@ import {
 } from "react-syntax-highlighter/dist/esm/styles/prism"
 import { DeleteIcon } from "@chakra-ui/icons"
 import { deleteComment } from "@/utils/db"
+import DeleteCommentButton from "./DeleteCommentButton"
 
 const Comment = ({
-  id,
+  commentId,
   authorName,
   authorAvatar,
   comment,
@@ -30,6 +31,8 @@ const Comment = ({
   status,
   isOwner,
   siteSettings,
+  siteId,
+  route,
 }) => {
   const { colorMode } = useColorMode()
   const toast = useToast()
@@ -101,10 +104,10 @@ const Comment = ({
         </Flex>
         <Box>
           {isOwner && (
-            <IconButton
-              onClick={handleDelete}
-              colorScheme="red"
-              icon={<DeleteIcon />}
+            <DeleteCommentButton
+              siteId={siteId}
+              route={route}
+              commentId={commentId}
             />
           )}
         </Box>

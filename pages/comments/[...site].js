@@ -32,6 +32,8 @@ const SiteComments = () => {
     ? `/api/comments/${siteId}/${route}`
     : `/api/comments/${siteId}`
 
+  console.log("e", commentsApiUrl)
+
   const { data: commentsData } = useSWR(commentsApiUrl, fetcher)
   const { data: siteData } = useSWR(`/api/site/${siteId}`, fetcher)
 
@@ -142,7 +144,7 @@ const SiteComments = () => {
           allComments.length > 0 ? (
             allComments.map(comment => (
               <Comment
-                id={comment.id}
+                commentId={comment.id}
                 authorName={comment.authorName}
                 authorAvatar={comment.authorAvatar}
                 comment={comment.comment}
@@ -151,6 +153,8 @@ const SiteComments = () => {
                 status={comment.status}
                 isOwner={comment.authorEmail === user?.email}
                 siteSettings={siteData.settings}
+                siteId={siteId}
+                route={route ? route : ""}
               />
             ))
           ) : (
