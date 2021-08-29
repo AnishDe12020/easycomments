@@ -14,7 +14,13 @@ import {
 import React, { useState, useRef } from "react"
 import { mutate } from "swr"
 
-const DeleteCommentButton = ({ commentId, siteId, route, ...props }) => {
+const DeleteCommentButton = ({
+  commentId,
+  siteId,
+  route,
+  isMyComments,
+  ...props
+}) => {
   const [isOpen, setIsOpen] = useState(false)
   const toast = useToast()
   const onClose = () => {
@@ -32,7 +38,7 @@ const DeleteCommentButton = ({ commentId, siteId, route, ...props }) => {
     deleteComment(commentId)
       .then(() => {
         mutate(
-          commentsApiUrl,
+          isMyComments ? `/api/my-comments` : commentsApiUrl,
           async data => {
             return {
               comments: data.comments.filter(

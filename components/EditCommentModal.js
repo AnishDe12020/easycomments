@@ -20,7 +20,13 @@ import { updateComment } from "@/utils/db"
 import { mutate } from "swr"
 import { RiPencilFill } from "react-icons/ri"
 
-const EditCommentModal = ({ comment, commentId, siteId, route }) => {
+const EditCommentModal = ({
+  comment,
+  commentId,
+  siteId,
+  route,
+  isMyComments,
+}) => {
   console.log("ee", comment)
   const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -56,7 +62,7 @@ const EditCommentModal = ({ comment, commentId, siteId, route }) => {
             }
             await updateComment(commentId, newCommentData)
               .then(() => {
-                mutate(commentsApiUrl)
+                mutate(isMyComments ? `/api/my-comments` : commentsApiUrl)
 
                 toast({
                   title: "Comment Editted",

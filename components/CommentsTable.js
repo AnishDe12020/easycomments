@@ -17,8 +17,10 @@ import {
 import { format, parseISO } from "date-fns"
 import { updateComment } from "@/utils/db"
 import { mutate } from "swr"
+import EditCommentModal from "./EditCommentModal"
+import DeleteCommentButton from "./DeleteCommentButton"
 
-const CommentsTable = ({ siteId, comments }) => {
+const CommentsTable = ({ siteId, comments, isMyComments }) => {
   const toast = useToast()
 
   const selectOptions = [
@@ -101,7 +103,14 @@ const CommentsTable = ({ siteId, comments }) => {
               <Th>Site</Th>
               <Th>Route</Th>
               <Th>Date</Th>
-              <Th>Status</Th>
+              {isMyComments ? (
+                <>
+                  <Th>{""}</Th>
+                  <Th>{""}</Th>
+                </>
+              ) : (
+                <Th>Status</Th>
+              )}
             </Tr>
           </Thead>
           <Tbody>
@@ -131,19 +140,41 @@ const CommentsTable = ({ siteId, comments }) => {
                   <Code>{comment.route}</Code>
                 </Td>
                 <Td>{format(parseISO(comment.createdAt), "PPpp")}</Td>
-                <Td>
-                  <Select
-                    onChange={e => handleChange(e, comment.id)}
-                    name="status"
-                    value={comment.status}
-                  >
-                    {selectOptions.map(option => (
-                      <option value={option.value} key={option.value}>
-                        {option.label}
-                      </option>
-                    ))}
-                  </Select>
-                </Td>
+                {isMyComments ? (
+                  <>
+                    <Td>
+                      <EditCommentModal
+                        siteId={comment.siteId}
+                        route={comment.route}
+                        commentId={comment.id}
+                        comment={comment.comment}
+                        isMyComments
+                      />
+                    </Td>
+                    <Td>
+                      <DeleteCommentButton
+                        siteId={comment.siteId}
+                        route={comment.route}
+                        commentId={comment.id}
+                        isMyComments
+                      />
+                    </Td>
+                  </>
+                ) : (
+                  <Td>
+                    <Select
+                      onChange={e => handleChange(e, comment.id)}
+                      name="status"
+                      value={comment.status}
+                    >
+                      {selectOptions.map(option => (
+                        <option value={option.value} key={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </Select>
+                  </Td>
+                )}
               </Tr>
             ))}
           </Tbody>
