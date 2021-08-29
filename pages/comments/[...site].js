@@ -8,6 +8,8 @@ import {
   useColorModeValue,
   Box,
   Center,
+  Stack,
+  Skeleton,
 } from "@chakra-ui/react"
 import Header from "@/components/Header"
 import { useRouter } from "next/router"
@@ -165,7 +167,11 @@ const SiteComments = () => {
             </Center>
           )
         ) : (
-          <Text>Loading comments...</Text>
+          <Stack>
+            <Skeleton width="100%" height="70px" />
+            <Skeleton width="100%" height="70px" />
+            <Skeleton width="100%" height="70px" />
+          </Stack>
         )}
       </Box>
     </>
