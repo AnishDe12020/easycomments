@@ -16,6 +16,10 @@ export const updateComment = async (id, newData) => {
   return await firestore.collection("comments").doc(id).update(newData)
 }
 
+export const deleteComment = async id => {
+  return await firestore.collection("comments").doc(id).delete()
+}
+
 export const deleteSite = async id => {
   const batch = firestore.batch()
 

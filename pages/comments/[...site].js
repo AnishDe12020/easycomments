@@ -142,6 +142,7 @@ const SiteComments = () => {
           allComments.length > 0 ? (
             allComments.map(comment => (
               <Comment
+                id={comment.id}
                 authorName={comment.authorName}
                 authorAvatar={comment.authorAvatar}
                 comment={comment.comment}

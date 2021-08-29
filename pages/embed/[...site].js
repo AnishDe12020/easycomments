@@ -68,10 +68,11 @@ const SiteComments = () => {
     <>
       <CommentsLink paths={router?.query?.site || []} />
       <Box backgroundColor={commentsBg} p={4} m={2} borderRadius={4}>
-        {allComments ? (
+        {allComments && siteData ? (
           allComments?.length > 0 ? (
             allComments.map(comment => (
               <Comment
+                id={comment.id}
                 authorName={comment.authorName}
                 authorAvatar={comment.authorAvatar}
                 comment={comment.comment}
