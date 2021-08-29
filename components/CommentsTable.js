@@ -99,7 +99,6 @@ const CommentsTable = ({ siteId, comments }) => {
               <Th>Author Name</Th>
               <Th>Comment</Th>
               <Th>Site</Th>
-              <Th>Site URL</Th>
               <Th>Route</Th>
               <Th>Date</Th>
               <Th>Status</Th>
@@ -116,10 +115,16 @@ const CommentsTable = ({ siteId, comments }) => {
                     {comment.comment}
                   </Text>
                 </Td>
-                <Td>{comment.siteName}</Td>
                 <Td>
-                  <NextLink href={comment.siteUrl} passHref>
-                    <Link>{comment.siteUrl}</Link>
+                  <NextLink
+                    href={
+                      comment.route === "/"
+                        ? comment.siteUrl
+                        : `${comment.siteUrl}/${comment.route}`
+                    }
+                    passHref
+                  >
+                    <Link>{comment.siteName}</Link>
                   </NextLink>
                 </Td>
                 <Td>
