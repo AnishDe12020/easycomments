@@ -72,17 +72,15 @@ const SiteComments = () => {
           allComments?.length > 0 ? (
             allComments.map(comment => (
               <Comment
-                commentId={comment.id}
                 authorName={comment.authorName}
                 authorAvatar={comment.authorAvatar}
                 comment={comment.comment}
                 createdAt={comment.createdAt}
                 key={comment.id}
                 status={comment.status}
+                isEmbed
                 isOwner={comment.authorEmail === user?.email}
                 siteSettings={siteData.settings}
-                siteId={siteId}
-                route={route ? route : "/"}
               />
             ))
           ) : (

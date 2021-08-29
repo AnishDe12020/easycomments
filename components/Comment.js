@@ -34,6 +34,7 @@ const Comment = ({
   siteSettings,
   siteId,
   route,
+  isEmbed,
 }) => {
   const { colorMode } = useColorMode()
   const toast = useToast()
@@ -103,7 +104,7 @@ const Comment = ({
             </Badge>
           )}
         </Flex>
-        {isOwner && (
+        {isOwner && !isEmbed && (
           <Box>
             <EditCommentModal
               siteId={siteId}
