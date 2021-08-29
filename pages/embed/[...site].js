@@ -31,11 +31,8 @@ const SiteComments = () => {
   const siteId = siteAndRoute ? siteAndRoute[0] : null
   const route = siteAndRoute ? siteAndRoute[1] : null
 
-  console.log("e", colorMode, preferredColorMode)
-
   if (preferredColorMode) {
     if (colorMode !== preferredColorMode) {
-      console.log("toggle")
       toggleColorMode()
     }
   }
@@ -63,8 +60,6 @@ const SiteComments = () => {
 
     allComments = [...userComments, ...othersComments]
   }
-
-  console.log(siteData)
 
   return (
     <>

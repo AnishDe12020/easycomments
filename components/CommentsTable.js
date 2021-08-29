@@ -32,7 +32,6 @@ const CommentsTable = ({ siteId, comments, isMyComments }) => {
     if (comments.length > 0) {
       const handleChange = async (e, id) => {
         const { value } = e.target
-        console.log(value, id)
         await updateComment(id, { status: value })
           .then(() => {
             if (siteId) {
@@ -84,7 +83,6 @@ const CommentsTable = ({ siteId, comments, isMyComments }) => {
             })
           })
           .catch(err => {
-            console.error(err)
             toast({
               title: "An error occured",
               description: err.message,

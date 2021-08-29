@@ -31,10 +31,7 @@ const DeleteCommentButton = ({
     ? `/api/comments/${siteId}/${route}`
     : `/api/comments/${siteId}`
 
-  console.log(commentsApiUrl)
-
   const onDeleteConfirm = () => {
-    console.log(`Deleting comment with id ${siteId}`)
     deleteComment(commentId)
       .then(() => {
         mutate(
@@ -58,7 +55,6 @@ const DeleteCommentButton = ({
         })
       })
       .catch(err => {
-        console.error(err)
         toast({
           title: "An error occured when deleteing your comment",
           description: err.message,

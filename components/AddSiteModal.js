@@ -87,7 +87,6 @@ const AddSiteModal = ({ children }) => {
                 onClose()
               })
               .catch(error => {
-                console.error(error)
                 toast({
                   title: "An error occured when adding your site",
                   description: error.message,

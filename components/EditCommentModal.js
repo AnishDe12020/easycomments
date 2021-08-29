@@ -27,7 +27,6 @@ const EditCommentModal = ({
   route,
   isMyComments,
 }) => {
-  console.log("ee", comment)
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   const initialRef = React.useRef()
@@ -74,7 +73,6 @@ const EditCommentModal = ({
                 onClose()
               })
               .catch(error => {
-                console.error(error)
                 toast({
                   title: "An error occured when editting your comment",
                   description: error.message,

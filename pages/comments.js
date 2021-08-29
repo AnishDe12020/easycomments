@@ -9,7 +9,6 @@ import useSWR from "swr"
 
 const Comments = () => {
   const { data } = useSWR("/api/comments", fetcher)
-  console.log(data)
 
   return (
     <>

@@ -21,7 +21,6 @@ import { updateSite } from "@/utils/db"
 import { mutate } from "swr"
 
 const UpdateSiteModal = ({ site, children }) => {
-  console.log(site)
   const { isOpen, onOpen, onClose } = useDisclosure()
   const { user } = useUser()
 
@@ -87,7 +86,6 @@ const UpdateSiteModal = ({ site, children }) => {
                 onClose()
               })
               .catch(error => {
-                console.error(error)
                 toast({
                   title: "An error occured when updating your site",
                   description: error.message,

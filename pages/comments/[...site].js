@@ -34,8 +34,6 @@ const SiteComments = () => {
     ? `/api/comments/${siteId}/${route}`
     : `/api/comments/${siteId}`
 
-  console.log("e", commentsApiUrl)
-
   const { data: commentsData } = useSWR(commentsApiUrl, fetcher)
   const { data: siteData } = useSWR(`/api/site/${siteId}`, fetcher)
 
@@ -55,8 +53,6 @@ const SiteComments = () => {
 
     allComments = [...userComments, ...othersComments]
   }
-
-  console.log(siteData)
 
   const toast = useToast()
 
@@ -94,8 +90,6 @@ const SiteComments = () => {
                 status: "pending",
               }
 
-              console.log(newComment)
-
               addComment(newComment)
                 .then(() => {
                   mutate(commentsApiUrl)
@@ -109,7 +103,6 @@ const SiteComments = () => {
                   })
                 })
                 .catch(error => {
-                  console.error(error)
                   toast({
                     title: "An error occured when adding your comment",
                     description: error.message,

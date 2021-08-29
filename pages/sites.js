@@ -9,7 +9,6 @@ import { withPageAuthRequired } from "@auth0/nextjs-auth0/dist/frontend"
 
 const Sites = () => {
   const { data } = useSWR("/api/sites", fetcher)
-  console.log(data)
 
   return (
     <>

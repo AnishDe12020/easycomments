@@ -22,7 +22,6 @@ const DeleteSiteButton = ({ siteId }) => {
   }
 
   const onDeleteConfirm = () => {
-    console.log(`Deleting site with id ${siteId}`)
     deleteSite(siteId)
       .then(() => {
         mutate(
@@ -44,7 +43,6 @@ const DeleteSiteButton = ({ siteId }) => {
         })
       })
       .catch(err => {
-        console.error(err)
         toast({
           title: "An error occured when deleteing your site",
           description: err.message,

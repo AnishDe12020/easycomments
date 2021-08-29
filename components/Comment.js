@@ -36,10 +36,8 @@ const Comment = ({
 }) => {
   const { colorMode } = useColorMode()
   const toast = useToast()
-  console.log("e", siteSettings)
 
   const handleDelete = async () => {
-    console.log("delete")
     await deleteComment(id)
       .then(() => {
         toast({
@@ -51,7 +49,6 @@ const Comment = ({
         })
       })
       .catch(err => {
-        console.error(err)
         toast({
           title: "An error occured when deleting your comment",
           description: err.message,

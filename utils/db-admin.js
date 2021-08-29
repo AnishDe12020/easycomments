@@ -36,7 +36,6 @@ export const getUserSites = async email => {
 export const getAllComments = async email => {
   try {
     const data = await getUserSites(email)
-    // console.log(data.sites)
 
     let i,
       j,

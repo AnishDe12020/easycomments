@@ -11,7 +11,6 @@ const Comments = () => {
   const router = useRouter()
   const siteId = router.query.siteId
   const { data } = useSWR(`/api/comments/${siteId}`, fetcher)
-  console.log(data)
 
   return (
     <>
