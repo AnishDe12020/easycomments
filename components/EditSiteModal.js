@@ -65,7 +65,6 @@ const UpdateSiteModal = ({ site, children }) => {
           ) => {
             const newSiteData = {
               authorEmail: user.email,
-              createdAt: new Date().toISOString(),
               name: siteName,
               url: siteUrl,
               settings: {

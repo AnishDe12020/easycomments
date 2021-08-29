@@ -21,6 +21,7 @@ import {
 import { DeleteIcon } from "@chakra-ui/icons"
 import { deleteComment } from "@/utils/db"
 import DeleteCommentButton from "./DeleteCommentButton"
+import EditCommentModal from "./EditCommentModal"
 
 const Comment = ({
   commentId,
@@ -102,15 +103,22 @@ const Comment = ({
             </Badge>
           )}
         </Flex>
-        <Box>
-          {isOwner && (
+        {isOwner && (
+          <Box>
+            <EditCommentModal
+              siteId={siteId}
+              route={route}
+              comment={comment}
+              commentId={commentId}
+            />
             <DeleteCommentButton
+              ml={2}
               siteId={siteId}
               route={route}
               commentId={commentId}
             />
-          )}
-        </Box>
+          </Box>
+        )}
       </Flex>
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
