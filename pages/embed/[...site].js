@@ -67,7 +67,12 @@ const SiteComments = () => {
   return (
     <>
       <CommentsLink paths={router?.query?.site || []} />
-      <Box backgroundColor={commentsBg} p={4} m={2} borderRadius={4}>
+      <Box
+        backgroundColor={commentsBg}
+        p={{ md: 2, lg: 4 }}
+        m={{ md: 1, lg: 2 }}
+        borderRadius={4}
+      >
         {allComments && siteData ? (
           allComments?.length > 0 ? (
             allComments.map(comment => (

@@ -71,9 +71,11 @@ const Comment = ({
           {siteSettings.showAvatar && (
             <Avatar src={authorAvatar} size="xs" mb={1} mr={2} />
           )}
-          <Heading fontSize="2xl">{authorName}</Heading>
+          <Heading fontSize={{ sm: "md", md: "lg", lg: "xl", xl: "2xl" }}>
+            {authorName}
+          </Heading>
           {(siteSettings.showDate || siteSettings.showTime) && (
-            <Text fontSize="md" ml={2}>
+            <Text fontSize={{ sm: "xs", md: "sm", lg: "md", xl: "lg" }} ml={2}>
               {format(
                 parseISO(createdAt),
                 siteSettings.showDate && siteSettings.showTime
