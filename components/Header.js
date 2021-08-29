@@ -186,4 +186,8 @@ const NAV_ITEMS = [
     label: "Comments",
     href: "/comments",
   },
+  {
+    label: "My Comments",
+    href: "/my-comments",
+  },
 ]
