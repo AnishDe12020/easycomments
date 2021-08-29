@@ -114,9 +114,7 @@ const CommentsTable = ({ siteId, comments, isMyComments }) => {
           <Tbody>
             {comments.map(comment => (
               <Tr key={comment.id}>
-                <Td>
-                  <Link>{comment.authorName}</Link>
-                </Td>
+                <Td>{comment.authorName}</Td>
                 <Td>
                   <Text w={{ sm: 32, md: 64, lg: 128, xl: 256 }}>
                     {comment.comment}
@@ -126,8 +124,8 @@ const CommentsTable = ({ siteId, comments, isMyComments }) => {
                   <NextLink
                     href={
                       comment.route === "/"
-                        ? comment.siteUrl
-                        : `${comment.siteUrl}/${comment.route}`
+                        ? `${comment.siteUrl}/comments/${comment.siteId}`
+                        : `${comment.siteUrl}/comments/${comment.siteId}/${comment.route}`
                     }
                     passHref
                   >
