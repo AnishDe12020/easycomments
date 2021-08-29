@@ -100,7 +100,7 @@ const CommentsTable = ({ siteId, comments, isMyComments }) => {
               <Th>Comment</Th>
               <Th>Site</Th>
               <Th>Route</Th>
-              <Th>Date</Th>
+              <Th>Date and Time</Th>
               {isMyComments ? (
                 <>
                   <Th>{""}</Th>
