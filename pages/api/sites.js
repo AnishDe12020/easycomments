@@ -6,10 +6,10 @@ const sites = async (req, res) => {
   const { sites, error } = await getUserSites(user.email)
 
   if (error) {
-    res.status(500).json({ error })
+    return res.status(500).json({ error })
   }
 
-  res.status(200).json({ sites })
+  return res.status(200).json({ sites })
 }
 
 export default withApiAuthRequired(sites)

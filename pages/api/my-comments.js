@@ -6,10 +6,10 @@ const comments = async (req, res) => {
   const { comments, error } = await getAllComments(user.email)
 
   if (error) {
-    res.status(500).json({ error })
+    return res.status(500).json({ error })
   }
 
-  res.status(200).json({ comments })
+  return res.status(200).json({ comments })
 }
 
 export default withApiAuthRequired(comments)

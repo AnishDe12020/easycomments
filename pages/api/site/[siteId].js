@@ -5,10 +5,10 @@ const siteApi = async (req, res) => {
   const { site, error } = await getSite(siteId)
 
   if (error) {
-    res.status(500).json({ error })
+    return res.status(500).json({ error })
   }
 
-  res.status(200).json(site)
+  return res.status(200).json(site)
 }
 
 export default siteApi

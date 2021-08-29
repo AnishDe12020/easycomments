@@ -5,10 +5,10 @@ const siteComments = async (req, res) => {
   const { comments, error } = await getSiteComments(siteId, route)
 
   if (error) {
-    res.status(500).json({ error })
+    return res.status(500).json({ error })
   }
 
-  res.status(200).json({ comments })
+  return res.status(200).json({ comments })
 }
 
 export default siteComments
