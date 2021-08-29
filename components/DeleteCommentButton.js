@@ -14,7 +14,7 @@ import {
 import React, { useState, useRef } from "react"
 import { mutate } from "swr"
 
-const DeleteCommentButton = ({ commentId, siteId, route }) => {
+const DeleteCommentButton = ({ commentId, siteId, route, ...props }) => {
   const [isOpen, setIsOpen] = useState(false)
   const toast = useToast()
   const onClose = () => {
@@ -72,6 +72,7 @@ const DeleteCommentButton = ({ commentId, siteId, route }) => {
         colorScheme="red"
         icon={<DeleteIcon />}
         onClick={() => setIsOpen(true)}
+        {...props}
       />
 
       <AlertDialog
