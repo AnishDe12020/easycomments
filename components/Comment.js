@@ -5,7 +5,6 @@ import {
   Flex,
   Badge,
   Avatar,
-  IconButton,
   useColorMode,
   useToast,
 } from "@chakra-ui/react"
@@ -18,7 +17,6 @@ import {
   dracula,
   solarizedlight,
 } from "react-syntax-highlighter/dist/esm/styles/prism"
-import { DeleteIcon } from "@chakra-ui/icons"
 import { deleteComment } from "@/utils/db"
 import DeleteCommentButton from "./DeleteCommentButton"
 import EditCommentModal from "./EditCommentModal"
