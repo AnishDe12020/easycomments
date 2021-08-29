@@ -99,3 +99,22 @@ export const getSite = async siteId => {
     return { error }
   }
 }
+
+export const getMyComments = async email => {
+  try {
+    const snapshot = await db
+      .collection("comments")
+      .where("authorEmail", "==", email)
+      .get()
+
+    const comments = []
+
+    snapshot.forEach(doc => {
+      comments.push({ id: doc.id, ...doc.data() })
+    })
+
+    return { comments }
+  } catch (error) {
+    return { error }
+  }
+}
