@@ -16,11 +16,13 @@ import NextLink from "next/link"
 import { HamburgerIcon, CloseIcon, SunIcon, MoonIcon } from "@chakra-ui/icons"
 import { useUser } from "@auth0/nextjs-auth0"
 import { Logo } from "@/styles/icons"
+import { useRouter } from "next/router"
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure()
   const { user } = useUser()
   const { colorMode, toggleColorMode } = useColorMode()
+  const router = useRouter()
 
   return (
     <Box>
@@ -94,7 +96,7 @@ export default function WithSubnavigation() {
               fontSize={"sm"}
               fontWeight={400}
               variant={"link"}
-              href={"/api/auth/login"}
+              href={`/api/auth/login?returnTo=${router.asPath}`}
             >
               Sign In
             </Button>

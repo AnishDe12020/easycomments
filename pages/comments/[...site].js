@@ -10,7 +10,6 @@ import {
   Center,
   Stack,
   Skeleton,
-  Link,
 } from "@chakra-ui/react"
 import Header from "@/components/Header"
 import { useRouter } from "next/router"
