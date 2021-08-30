@@ -57,12 +57,17 @@ export default function WithSubnavigation() {
           justify={{ base: "center", md: "start" }}
           align="center"
         >
-          <Image
-            src={logo}
-            alt="Easy Comments logo"
-            height="40px"
-            width="40px"
-          />
+          <NextLink href="https://easycomments.anishde.dev" passHref>
+            <Link>
+              <Image
+                src={logo}
+                alt="Easy Comments logo"
+                height="40px"
+                width="40px"
+                cursor="pointer"
+              />
+            </Link>
+          </NextLink>
 
           <IconButton
             onClick={toggleColorMode}
