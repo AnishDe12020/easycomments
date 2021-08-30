@@ -87,7 +87,7 @@ const SiteComments = () => {
                 authorAvatar: user.picture,
                 comment: values.comment,
                 createdAt: new Date().toISOString(),
-                status: "pending",
+                status: siteData.settings.autoApprove ? "approved" : "pending",
               }
 
               addComment(newComment)

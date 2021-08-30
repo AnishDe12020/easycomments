@@ -41,6 +41,7 @@ const UpdateSiteModal = ({ site, children }) => {
             showDate: site.settings.showDate,
             showTime: site.settings.showTime,
             showAvatar: site.settings.showAvatar,
+            autoApprove: site.settings.autoApprove,
           }}
           validate={values => {
             const errors = {}
@@ -59,7 +60,7 @@ const UpdateSiteModal = ({ site, children }) => {
             return errors
           }}
           onSubmit={async (
-            { siteName, siteUrl, showDate, showTime, showAvatar },
+            { siteName, siteUrl, showDate, showTime, showAvatar, autoApprove },
             { setSubmitting }
           ) => {
             const newSiteData = {
@@ -70,6 +71,7 @@ const UpdateSiteModal = ({ site, children }) => {
                 showDate,
                 showTime,
                 showAvatar,
+                autoApprove,
               },
             }
             await updateSite(site.id, newSiteData)
@@ -154,6 +156,16 @@ const UpdateSiteModal = ({ site, children }) => {
                     <Switch
                       name="showAvatar"
                       isChecked={values.showAvatar}
+                      onBlur={handleBlur}
+                      onChange={handleChange}
+                    />
+                  </FormControl>
+
+                  <FormControl mt={4}>
+                    <FormLabel>Automatically Approve Comments</FormLabel>
+                    <Switch
+                      name="autoApprove"
+                      isChecked={values.autoApprove}
                       onBlur={handleBlur}
                       onChange={handleChange}
                     />
