@@ -33,6 +33,7 @@ const Comment = ({
   siteId,
   route,
   isEmbed,
+  isEdited,
 }) => {
   const { colorMode } = useColorMode()
   const toast = useToast()
@@ -118,6 +119,7 @@ const Comment = ({
           </Box>
         )}
       </Flex>
+      {isEdited && <Badge>Edited</Badge>}
       <ReactMarkdown
         remarkPlugins={[remarkGfm]}
         components={{

@@ -152,6 +152,7 @@ const SiteComments = () => {
                 siteSettings={siteData.settings}
                 siteId={siteId}
                 route={route ? route : ""}
+                isEdited={comment.isEdited}
               />
             ))
           ) : (

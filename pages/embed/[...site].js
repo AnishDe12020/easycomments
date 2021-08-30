@@ -83,6 +83,7 @@ const SiteComments = () => {
                 isEmbed
                 isOwner={comment.authorEmail === user?.email}
                 siteSettings={siteData.settings}
+                isEdited={comment.isEdited}
               />
             ))
           ) : (
