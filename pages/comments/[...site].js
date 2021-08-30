@@ -10,6 +10,7 @@ import {
   Center,
   Stack,
   Skeleton,
+  Link,
 } from "@chakra-ui/react"
 import Header from "@/components/Header"
 import { useRouter } from "next/router"
@@ -56,11 +57,6 @@ const SiteComments = () => {
   }
 
   const toast = useToast()
-
-  const handleLoginClick = e => {
-    e.preventDefault()
-    router.push("/api/auth/login")
-  }
 
   return (
     <>
@@ -135,7 +131,9 @@ const SiteComments = () => {
             )}
           </Formik>
         ) : (
-          <Button onClick={handleLoginClick}>Log in to leave a comment</Button>
+          <Button as="a" href={`/api/auth/login?returnTo=${router.asPath}`}>
+            Log in to leave a comment
+          </Button>
         )}
       </Box>
 
