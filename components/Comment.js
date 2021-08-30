@@ -65,7 +65,7 @@ const Comment = ({
       <Flex justifyContent="space-between">
         <Flex align="end" p={0.5}>
           {siteSettings.showAvatar && (
-            <Avatar src={authorAvatar} size="xs" mb={1} mr={2} />
+            <Avatar src={authorAvatar} size="xs" mb={1} mr={2} alt="avatar" />
           )}
           <Heading fontSize={{ sm: "md", md: "lg", lg: "xl", xl: "2xl" }}>
             {authorName}
