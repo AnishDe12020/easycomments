@@ -3,6 +3,7 @@ import Feature from "@/components/Feature"
 import { ImHammer2 } from "react-icons/im"
 import { DiOpensource } from "react-icons/di"
 import { FaVideoSlash, FaLemon } from "react-icons/fa"
+import { MdDashboard } from "react-icons/md"
 
 const Features = props => {
   const features = [
@@ -20,15 +21,21 @@ const Features = props => {
     },
     {
       id: 3,
-      title: "Easy to use",
+      title: "Easy to Use",
       text: "The main goal of the project was to make it as easy to use as possible. Just sign up, add a site, copy the embed URL and create an iframe or an IframeResizer component on your site and start receiving comments!!!",
       icon: <Icon as={FaLemon} w={10} h={10} />,
     },
     {
       id: 4,
-      title: "Comment moderation",
+      title: "Comment Moderation",
       text: "We want the internet to be a friendly place without unnecessary spam and bad comments so we give you the power to approve and remove comments.",
       icon: <Icon as={ImHammer2} w={10} h={10} />,
+    },
+    {
+      id: 5,
+      title: "Comment Management",
+      text: "The site owner has the ability to approve and remove comments from the comments dashboard. The one commenting can edit the comment and also delete it.",
+      icon: <Icon as={MdDashboard} w={10} h={10} />,
     },
   ]
 
