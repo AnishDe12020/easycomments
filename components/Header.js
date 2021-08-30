@@ -15,8 +15,9 @@ import {
 import NextLink from "next/link"
 import { HamburgerIcon, CloseIcon, SunIcon, MoonIcon } from "@chakra-ui/icons"
 import { useUser } from "@auth0/nextjs-auth0"
-import { Logo } from "@/styles/icons"
 import { useRouter } from "next/router"
+import Image from "next/image"
+import logo from "../public/logo.png"
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure()
@@ -56,7 +57,12 @@ export default function WithSubnavigation() {
           justify={{ base: "center", md: "start" }}
           align="center"
         >
-          <Logo />
+          <Image
+            src={logo}
+            alt="Easy Comments logo"
+            height="40px"
+            width="40px"
+          />
 
           <IconButton
             onClick={toggleColorMode}
