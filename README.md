@@ -52,13 +52,13 @@ You can also embed this in any website which supports embeds (e.g. Notion)
 
 Open a [GitHub issue](https://github.com/AnishDe12020/easycomments/issues) in this repository. There is a bug report remplate so please stick to that.
 
-# Contibuting
+# 🛡️ Contibuting
 
 Pull requests are welcome!!! Please fork the project and create a seperate branch for the pull request. Please stick to just 1 new feature or fixing 1 big per pull request. If you want to make a big change, open a discussion thread in the [discussions section](https://github.com/AnishDe12020/easycomments/discussions) in the "Ideas" catogery. If you open a pull request and you are still working on it, please label it WIP (Work in Progress) and make it a draft.
 
 ---
 
-# Running locally
+# 💻 Running locally
 
 First clone the repository using git or download the zip and extract it.
 
