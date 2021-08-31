@@ -1,7 +1,38 @@
-### [Easy Comments](https://easycomments.anishde.dev) is a simple web app that allows you to add comments functionality to any website, be it an e-commerce platform or a blog.
+### [Easy Comments](https://easycomments.anishde.dev) is a simple web app that allows you to add comments functionality to any website, be it a portfolio site or a blog
 
 ![MIT License Shields.io Badge](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![GitHub Repo stars](https://img.shields.io/github/stars/anishde12020/easycomments?style=social)
+
+---
+
+# 🎛️ Features
+
+- Unlimited Sites
+- Unlimited Comments
+- Approval stage for comments (optional)
+- Free and Open Source
+- No Trackers and No Ads
+- Route wise comments
+- Ability to edit and delete a comment
+- Markdown Support
+
+# 🖼️ Screenshots
+<details>
+  <summary>Click to see screenshots</summary>
+  <img src="https://i.imgur.com/T7FOqZz.png" alt="Home Page Screenshot" />
+  <img src="https://i.imgur.com/avdZnni.png" alt="Sites Page Screenshot" />
+  <img src="https://i.imgur.com/S4La8wt.png" alt="Manage Comments Page Screenshot" />
+  <img src="https://i.imgur.com/V7Zbzpa.png" alt="My Comments Page Screenshot" />
+  <img src="https://i.imgur.com/kbu0jtt.png" alt="Leave a Comment Page Screenshot" />
+</details>
+
+# ✔️ To-Do
+- [ ] Support for reactions
+- [ ] Comment threads
+- [ ] Better markdown support, support for LaTeX
+
+Open a discussion for a feature request and I will add it here!!!
+
 
 ---
 
@@ -110,3 +141,5 @@ yarn dev
 ```
 
 Then visit [`localhost:3000`](http://localhost:3000) in your browser to see the site in a development environment.
+
+### ⭐ If you liked the project, don't forget to star it!!!
