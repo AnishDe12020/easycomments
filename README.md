@@ -30,6 +30,7 @@
 - [ ] Support for reactions
 - [ ] Comment threads
 - [ ] Better markdown support, support for LaTeX
+- [ ] Support for custom color schemes, site based
 
 Open a discussion for a feature request and I will add it here!!!
 
