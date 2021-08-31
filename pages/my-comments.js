@@ -7,6 +7,7 @@ import { Box } from "@chakra-ui/react"
 import React from "react"
 import useSWR from "swr"
 import { NextSeo } from "next-seo"
+import Footer from "@/components/Footer"
 
 const Comments = () => {
   const { data } = useSWR("/api/my-comments", fetcher)
@@ -25,6 +26,7 @@ const Comments = () => {
           <CommentsTableSkeleton />
         )}
       </Box>
+      <Footer />
     </>
   )
 }

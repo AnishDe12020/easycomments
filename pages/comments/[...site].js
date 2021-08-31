@@ -20,6 +20,7 @@ import { addComment } from "@/utils/db"
 import useSWR, { mutate } from "swr"
 import fetcher from "@/utils/fetcher"
 import { NextSeo } from "next-seo"
+import Footer from "@/components/Footer"
 
 const SiteComments = () => {
   const { user } = useUser()
@@ -170,6 +171,7 @@ const SiteComments = () => {
           </Stack>
         )}
       </Box>
+      <Footer />
     </>
   )
 }

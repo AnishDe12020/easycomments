@@ -7,6 +7,7 @@ import { Box } from "@chakra-ui/react"
 import useSWR from "swr"
 import { withPageAuthRequired } from "@auth0/nextjs-auth0/dist/frontend"
 import { NextSeo } from "next-seo"
+import Footer from "@/components/Footer"
 
 const Sites = () => {
   const { data } = useSWR("/api/sites", fetcher)
@@ -23,6 +24,7 @@ const Sites = () => {
 
         {data ? <SiteTable sites={data.sites} /> : <SiteTableSkeleton />}
       </Box>
+      <Footer />
     </>
   )
 }

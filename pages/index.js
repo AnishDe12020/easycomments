@@ -5,6 +5,7 @@ import IframeResizer from "iframe-resizer-react"
 import Head from "next/head"
 import React from "react"
 import { NextSeo } from "next-seo"
+import Footer from "@/components/Footer"
 
 export default function Home() {
   return (
@@ -35,6 +36,7 @@ export default function Home() {
           title="Comments"
         />
       </Box>
+      <Footer />
     </Box>
   )
 }
