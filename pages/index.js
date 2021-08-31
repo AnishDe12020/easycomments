@@ -24,7 +24,7 @@ export default function Home() {
         </Center>
         <Features mt={8} />
       </Flex>
-      <Box m={{ sm: 2, md: 4, lg: 8 }} height="100%">
+      <Box m={{ sm: 2, md: 4, lg: 8 }}>
         <IframeResizer
           style={{
             width: "1px",
