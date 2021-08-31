@@ -1,5 +1,8 @@
 ### [Easy Comments](https://easycomments.anishde.dev) is a simple web app that allows you to add comments functionality to any website, be it an e-commerce platform or a blog.
 
+![MIT License Shields.io Badge](https://img.shields.io/badge/License-MIT-yellow.svg)
+![GitHub Repo stars](https://img.shields.io/github/stars/anishde12020/easycomments?style=social)
+
 ---
 
 # 📖 Guide
