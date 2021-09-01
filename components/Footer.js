@@ -55,10 +55,16 @@ const Footer = () => {
         >
           <Text>Easy Comments</Text>
           <Stack direction={"row"} spacing={6}>
-            <SocialButton label={"GitHub"} href={"#"}>
+            <SocialButton
+              label={"GitHub"}
+              href={"https://github.com/AnishDe12020/easycomments"}
+            >
               <FaGithub />
             </SocialButton>
-            <SocialButton label={"YouTube"} href={"#"}>
+            <SocialButton
+              label={"YouTube"}
+              href={"https://www.youtube.com/anishtechtutorials"}
+            >
               <FaYoutube />
             </SocialButton>
           </Stack>
