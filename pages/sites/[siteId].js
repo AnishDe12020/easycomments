@@ -8,7 +8,7 @@ import useSWR from "swr"
 import { useRouter } from "next/router"
 import { NextSeo } from "next-seo"
 import Footer from "@/components/Footer"
-import { withPageAuthRequired } from "@auth0/nextjs-auth0s"
+import { withPageAuthRequired } from "@auth0/nextjs-auth0"
 
 const Comments = () => {
   const router = useRouter()
