@@ -17,7 +17,7 @@ import { HamburgerIcon, CloseIcon, SunIcon, MoonIcon } from "@chakra-ui/icons"
 import { useUser } from "@auth0/nextjs-auth0"
 import { useRouter } from "next/router"
 import Image from "next/image"
-import logo from "../public/logo.png"
+import logo from "../public/logo_transparent.png"
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure()
@@ -57,7 +57,7 @@ export default function WithSubnavigation() {
           justify={{ base: "center", md: "start" }}
           align="center"
         >
-          <NextLink href="https://easycomments.anishde.dev" passHref>
+          <NextLink href="/" passHref>
             <Link>
               <Image
                 src={logo}
