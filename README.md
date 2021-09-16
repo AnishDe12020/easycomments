@@ -91,7 +91,7 @@ Open a [GitHub issue](https://github.com/AnishDe12020/easycomments/issues) in th
 
 # 🛡️ Contibuting
 
-Pull requests are welcome!!! Please fork the project and create a seperate branch for the pull request. Please stick to just 1 new feature or fixing 1 big per pull request. If you want to make a big change, open a discussion thread in the [discussions section](https://github.com/AnishDe12020/easycomments/discussions) in the "Ideas" catogery. If you open a pull request and you are still working on it, please label it WIP (Work in Progress) and make it a draft.
+Pull requests are welcome!!! Please fork the project and create a seperate branch for the pull request. Please stick to just 1 new feature or fixing 1 big per pull request. If you want to make a big change, open a discussion thread in the [discussions section](https://github.com/AnishDe12020/easycomments/discussions) in the "Ideas" catogery. If you open a pull request and you are still working on it, please label it WIP (Work in Progress) and make it a draft. I also recommend you to stick to the `yarn` package manager.
 
 ---
 
