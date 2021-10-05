@@ -1,40 +1,63 @@
 import { firestore } from "@/lib/firebase"
 
 export const createSite = async data => {
-  return await firestore.collection("sites").add(data)
+  try {
+    return await firestore.collection("sites").add(data)
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 export const updateSite = async (id, newData) => {
-  return await firestore.collection("sites").doc(id).update(newData)
+  try {
+    return await firestore.collection("sites").doc(id).update(newData)
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 export const addComment = async data => {
-  return await firestore.collection("comments").add(data)
+  try {
+    return await firestore.collection("comments").add(data)
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 export const updateComment = async (id, newData) => {
-  return await firestore.collection("comments").doc(id).update(newData)
+  try {
+    return await firestore.collection("comments").doc(id).update(newData)
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 export const deleteComment = async id => {
-  return await firestore.collection("comments").doc(id).delete()
+  try {
+    return await firestore.collection("comments").doc(id).delete()
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 export const deleteSite = async id => {
-  const batch = firestore.batch()
+  try {
+    const batch = firestore.batch()
+    const snapshot = await firestore
+      .collection("comments")
+      .where("siteId", "==", id)
+      .get()
 
-  const snapshot = await firestore
-    .collection("comments")
-    .where("siteId", "==", id)
-    .get()
+    snapshot.forEach(doc => {
+      batch.delete(doc.ref)
+    })
 
-  snapshot.forEach(doc => {
-    batch.delete(doc.ref)
-  })
+    const siteRef = firestore.collection("sites").doc(id)
 
-  const siteRef = firestore.collection("sites").doc(id)
+    batch.delete(siteRef)
 
-  batch.delete(siteRef)
-
-  return await batch.commit()
+    return await batch.commit()
+  } catch (error) {
+    console.log(error)
+  }
 }
