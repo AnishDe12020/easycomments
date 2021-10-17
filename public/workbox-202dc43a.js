@@ -430,14 +430,14 @@ define("./workbox-202dc43a.js",['exports'], function (exports) { 'use strict';
       const type = typeof object[expectedMethod];
 
       if (type !== 'function') {
-        details['expectedMethod'] = expectedMethod;
+        details.expectedMethod = expectedMethod;
         throw new WorkboxError('missing-a-method', details);
       }
     };
 
     const isType = (object, expectedType, details) => {
       if (typeof object !== expectedType) {
-        details['expectedType'] = expectedType;
+        details.expectedType = expectedType;
         throw new WorkboxError('incorrect-type', details);
       }
     };
@@ -446,14 +446,14 @@ define("./workbox-202dc43a.js",['exports'], function (exports) { 'use strict';
     // eslint-disable-next-line @typescript-eslint/ban-types
     expectedClass, details) => {
       if (!(object instanceof expectedClass)) {
-        details['expectedClassName'] = expectedClass.name;
+        details.expectedClassName = expectedClass.name;
         throw new WorkboxError('incorrect-class', details);
       }
     };
 
     const isOneOf = (value, validValues, details) => {
       if (!validValues.includes(value)) {
-        details['validValueDescription'] = `Valid values are ${JSON.stringify(validValues)}.`;
+        details.validValueDescription = `Valid values are ${JSON.stringify(validValues)}.`;
         throw new WorkboxError('invalid-value', details);
       }
     };
