@@ -2027,7 +2027,7 @@ define("./workbox-202dc43a.js",['exports'], function (exports) { 'use strict';
       async doneWaiting() {
         let promise;
 
-        while (promise = this._extendLifetimePromises.shift()) {
+        while (promise === this._extendLifetimePromises.shift()) {
           await promise;
         }
       }
