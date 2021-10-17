@@ -17,7 +17,6 @@ import fetcher from "@/utils/fetcher"
 import CommentsLink from "@/components/CommentsLink"
 
 import "iframe-resizer/js/iframeResizer.contentWindow"
-import Footer from "@/components/Footer"
 
 const SiteComments = () => {
   const { user } = useUser()
