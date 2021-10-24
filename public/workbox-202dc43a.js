@@ -2,7 +2,9 @@ define("./workbox-202dc43a.js",['exports'], function (exports) { 'use strict';
 
     try {
       self['workbox:core:6.2.4'] && _();
-    } catch (e) {}
+    } catch (e) {
+      console.log("error", e);
+    }
 
     /*
       Copyright 2019 Google LLC
@@ -485,7 +487,9 @@ define("./workbox-202dc43a.js",['exports'], function (exports) { 'use strict';
 
     try {
       self['workbox:routing:6.2.4'] && _();
-    } catch (e) {}
+    } catch (e) {
+      console.log("error", e);
+    }
 
     /*
       Copyright 2018 Google LLC
@@ -1299,7 +1303,9 @@ define("./workbox-202dc43a.js",['exports'], function (exports) { 'use strict';
 
     try {
       self['workbox:strategies:6.2.4'] && _();
-    } catch (e) {}
+    } catch (e) {
+      console.log("error", e);
+    }
 
     /*
       Copyright 2018 Google LLC
