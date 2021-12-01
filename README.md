@@ -146,3 +146,5 @@ yarn dev
 Then visit [`localhost:3000`](http://localhost:3000) in your browser to see the site in a development environment.
 
 ### ⭐ If you liked the project, don't forget to star it!!!
+
+Note: This was one of my first projects and I had built it after learning a lot from Lee Robinson's [React2025](https://react2025.com/) course
