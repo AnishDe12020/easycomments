@@ -21,7 +21,7 @@
     "framer-motion": "^4",
     "iframe-resizer": "^4.3.2",
     "iframe-resizer-react": "^1.1.0",
-    "next": "11.1.2",
+    "next": "12.1.0",
     "next-pwa": "^5.4.0",
     "next-seo": "^4.28.1",
     "nextjs-progressbar": "^0.0.11",
